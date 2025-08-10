@@ -4,11 +4,7 @@ import { allProjects } from "contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
-// import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
-
-// Temporarily disable Redis to avoid configuration errors
-// const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
@@ -18,22 +14,44 @@ export default async function ProjectsPage() {
     return acc;
   }, {} as Record<string, number>);
 
-  const featured = allProjects.find((project) => project.slug === "unkey")!;
-  const top2 = allProjects.find((project) => project.slug === "planetfall")!;
-  const top3 = allProjects.find((project) => project.slug === "highstorm")!;
-  const sorted = allProjects
-    .filter((p) => p.published)
-    .filter(
-      (project) =>
-        project.slug !== featured.slug &&
-        project.slug !== top2.slug &&
-        project.slug !== top3.slug,
-    )
-    .sort(
-      (a, b) =>
-        new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() -
-        new Date(a.date ?? Number.POSITIVE_INFINITY).getTime(),
+  const publishedProjects = allProjects.filter((p) => p.published);
+
+  // Categorize projects
+  const aiMLProjects = publishedProjects.filter((project) => 
+    project.slug.includes('cloud-algorithmic') || 
+    project.slug.includes('cloud-trading') ||
+    project.slug.includes('chart-building') ||
+    project.slug.includes('full-test-suite')
+  );
+
+  const mobileWebProjects = publishedProjects.filter((project) => 
+    project.slug.includes('android') ||
+    project.slug.includes('chronark') ||
+    project.slug.includes('envshare') ||
+    project.slug.includes('highstorm') ||
+    project.slug.includes('planetfall') ||
+    project.slug.includes('unkey') ||
+    project.slug.includes('zod-bird') ||
+    project.slug.includes('ecommerce') ||
+    project.slug.includes('access')
+  );
+
+  const cloudInfraProjects = publishedProjects.filter((project) => 
+    project.slug.includes('upstash') ||
+    project.slug.includes('terraform') ||
+    project.slug.includes('qstash')
+  );
+
+  // Sort projects by date within each category
+  const sortByDate = (projects: typeof publishedProjects) => 
+    projects.sort((a, b) => 
+      new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() - 
+      new Date(a.date ?? Number.POSITIVE_INFINITY).getTime()
     );
+
+  const sortedAiML = sortByDate(aiMLProjects);
+  const sortedMobileWeb = sortByDate(mobileWebProjects);
+  const sortedCloudInfra = sortByDate(cloudInfraProjects);
 
   return (
     <div className="relative pb-16 bg-black dark:bg-black light:bg-white min-h-screen">
@@ -45,89 +63,53 @@ export default async function ProjectsPage() {
               Projects
             </h1>
           </div>
-        <div className="w-full h-px bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200" />
+          <div className="w-full h-px bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200" />
 
-        <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
-          <Card>
-            <Link href={`/projects/${featured.slug}`}>
-              <article className="relative w-full h-full p-4 md:p-8">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="text-xs text-zinc-100">
-                    {featured.date ? (
-                      <time dateTime={new Date(featured.date).toISOString()}>
-                        {Intl.DateTimeFormat(undefined, {
-                          dateStyle: "medium",
-                        }).format(new Date(featured.date))}
-                      </time>
-                    ) : (
-                      <span>SOON</span>
-                    )}
-                  </div>
-                  <span className="flex items-center gap-1 text-xs text-zinc-500">
-                    <Eye className="w-4 h-4" />{" "}
-                    {Intl.NumberFormat("en-US", { notation: "compact" }).format(
-                      views[featured.slug] ?? 0,
-                    )}
-                  </span>
-                </div>
-
-                <h2
-                  id="featured-post"
-                  className="mt-4 text-3xl font-bold text-zinc-100 group-hover:text-white sm:text-4xl font-display"
-                >
-                  {featured.title}
-                </h2>
-                <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
-                  {featured.description}
-                </p>
-                <div className="absolute bottom-4 md:bottom-8">
-                  <p className="hidden text-zinc-200 hover:text-zinc-50 lg:block">
-                    Read more <span aria-hidden="true">&rarr;</span>
-                  </p>
-                </div>
-              </article>
-            </Link>
-          </Card>
-
-          <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
-            {[top2, top3].map((project) => (
-              <Card key={project.slug}>
-                <Article project={project} views={views[project.slug] ?? 0} />
-              </Card>
-            ))}
-          </div>
-        </div>
-        <div className="hidden w-full h-px md:block bg-zinc-800" />
-
-        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-          <div className="grid grid-cols-1 gap-4">
-            {sorted
-              .filter((_, i) => i % 3 === 0)
-              .map((project) => (
+          {/* AI & Machine Learning Section */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 border-b border-zinc-800 pb-2">
+              🤖 AI & Machine Learning
+            </h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {sortedAiML.map((project) => (
                 <Card key={project.slug}>
                   <Article project={project} views={views[project.slug] ?? 0} />
                 </Card>
               ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 gap-4">
-            {sorted
-              .filter((_, i) => i % 3 === 1)
-              .map((project) => (
+
+          <div className="w-full h-px bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200" />
+
+          {/* Mobile & Web Development Section */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 border-b border-zinc-800 pb-2">
+              📱 Mobile & Web Development
+            </h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {sortedMobileWeb.map((project) => (
                 <Card key={project.slug}>
                   <Article project={project} views={views[project.slug] ?? 0} />
                 </Card>
               ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 gap-4">
-            {sorted
-              .filter((_, i) => i % 3 === 2)
-              .map((project) => (
+
+          <div className="w-full h-px bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200" />
+
+          {/* Cloud & Infrastructure Section */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 border-b border-zinc-800 pb-2">
+              ☁️ Cloud & Infrastructure
+            </h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {sortedCloudInfra.map((project) => (
                 <Card key={project.slug}>
                   <Article project={project} views={views[project.slug] ?? 0} />
                 </Card>
               ))}
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
