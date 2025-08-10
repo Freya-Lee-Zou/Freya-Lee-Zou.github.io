@@ -36,13 +36,13 @@ export default function Example() {
 							Contact
 						</h1>
 					</div>
-					<div className="grid w-full grid-cols-1 gap-8 mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-16">
+					<div className="grid w-full grid-cols-1 gap-8 mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 					{socials.map((s) => (
 						<Card>
 							<Link
 								href={s.href}
 								target="_blank"
-								className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24  lg:pb-48  md:p-16"
+								className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-6 md:py-16 md:p-12"
 							>
 								<span
 									className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
@@ -51,8 +51,8 @@ export default function Example() {
 								<span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200 drop-shadow-orange">
 									{s.icon}
 								</span>{" "}
-								<div className="z-10 flex flex-col items-center text-center px-2">
-									<span className="text-lg sm:text-xl lg:text-2xl font-medium duration-150 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 font-display break-words max-w-full">
+								<div className="z-10 flex flex-col items-center text-center px-2 w-full">
+									<span className={`text-base sm:text-lg lg:text-xl font-medium duration-150 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 font-display break-words max-w-full leading-tight ${s.label === 'Email' ? 'text-sm sm:text-base lg:text-lg' : ''}`}>
 										{s.handle}
 									</span>
 									<span className="mt-4 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">
