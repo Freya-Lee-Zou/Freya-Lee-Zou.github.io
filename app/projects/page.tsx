@@ -7,16 +7,14 @@ import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
 
-const redis = Redis.fromEnv();
+// Temporarily disable Redis to avoid configuration errors
+// const redis = Redis.fromEnv();
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
-  const views = (
-    await redis.mget<number[]>(
-      ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc, v, i) => {
-    acc[allProjects[i].slug] = v ?? 0;
+  // Mock views data until Redis is properly configured
+  const views = allProjects.reduce((acc, project) => {
+    acc[project.slug] = Math.floor(Math.random() * 1000); // Random demo views
     return acc;
   }, {} as Record<string, number>);
 
