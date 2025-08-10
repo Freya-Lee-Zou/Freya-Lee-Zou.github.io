@@ -8,7 +8,7 @@ const workExperience = [
 		company: "Amazon",
 		position: "Software Dev Engineer I",
 		location: "Seattle, WA",
-		period: "October 2024 - Current",
+		period: "2025 - Current",
 		description: "Developing and maintaining enterprise-scale applications and cloud services using Java, Python, and Vue.js framework. Working on cross-platform communication solutions and microservice architecture improvements.",
 		achievements: [
 			"Developing cross-platform communication solutions using Java, Python, and Vue.js framework",
@@ -33,7 +33,7 @@ const workExperience = [
 
 export default function ExperiencePage() {
 	return (
-		<div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
+		<div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0 dark:from-zinc-900/0 dark:via-zinc-900 dark:to-zinc-900/0 light:from-white light:via-gray-50 light:to-white min-h-screen">
 			<Navigation />
 			<div className="container px-4 mx-auto py-20">
 				<div className="w-full mx-auto mt-20 space-y-8 max-w-6xl">

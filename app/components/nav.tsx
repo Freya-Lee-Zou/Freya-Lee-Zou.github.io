@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { ThemeToggle } from "./theme-toggle";
 
 export const Navigation: React.FC = () => {
 	const ref = useRef<HTMLElement>(null);
@@ -18,33 +19,36 @@ export const Navigation: React.FC = () => {
 
 	return (
 		<header ref={ref}>
-			<div className="fixed inset-x-0 top-0 z-50 duration-200 bg-gradient-to-b from-zinc-900/50 via-zinc-900/20 to-transparent">
+			<div className="fixed inset-x-0 top-0 z-50 duration-200 bg-gradient-to-b from-zinc-900/50 via-zinc-900/20 to-transparent dark:from-zinc-900/50 dark:via-zinc-900/20 dark:to-transparent light:from-white/80 light:via-white/40 light:to-transparent">
 				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
-					<div className="flex justify-between gap-8">
+					<div className="flex items-center gap-6">
+						<ThemeToggle />
+						<div className="flex justify-between gap-8">
 						<Link
 							href="/education"
-							className="duration-200 text-zinc-400 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-500 hover:to-teal-400"
+							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
 						>
 							Education
 						</Link>
 						<Link
 							href="/experience"
-							className="duration-200 text-zinc-400 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-500 hover:to-teal-400"
+							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
 						>
 							Experience
 						</Link>
 						<Link
 							href="/projects"
-							className="duration-200 text-zinc-400 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-500 hover:to-teal-400"
+							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
 						>
 							Projects
 						</Link>
 						<Link
 							href="/contact"
-							className="duration-200 text-zinc-400 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-500 hover:to-teal-400"
+							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
 						>
 							Contact
 						</Link>
+						</div>
 					</div>
 
 					<Link

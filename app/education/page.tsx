@@ -33,7 +33,7 @@ const education = [
 
 export default function EducationPage() {
 	return (
-		<div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
+		<div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0 dark:from-zinc-900/0 dark:via-zinc-900 dark:to-zinc-900/0 light:from-white light:via-gray-50 light:to-white min-h-screen">
 			<Navigation />
 			<div className="container px-4 mx-auto py-20">
 				<div className="w-full mx-auto mt-20 space-y-8 max-w-6xl">

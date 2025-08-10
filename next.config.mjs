@@ -6,6 +6,13 @@ const nextConfig = {
 	experimental: {
 		mdxRs: true,
 	},
+	output: 'export',
+	trailingSlash: true,
+	images: {
+		unoptimized: true,
+	},
+	basePath: process.env.NODE_ENV === 'production' ? '/freya_portfolio' : '',
+	assetPrefix: process.env.NODE_ENV === 'production' ? '/freya_portfolio/' : '',
 };
 
 export default withContentlayer(nextConfig);

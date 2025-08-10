@@ -4,7 +4,7 @@ import { allProjects } from "contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
-import { Redis } from "@upstash/redis";
+// import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
 
 // Temporarily disable Redis to avoid configuration errors
@@ -36,7 +36,7 @@ export default async function ProjectsPage() {
     );
 
   return (
-    <div className="relative pb-16">
+    <div className="relative pb-16 bg-black dark:bg-black light:bg-white min-h-screen">
       <Navigation />
       <div className="container px-4 mx-auto py-20">
         <div className="w-full mx-auto mt-20 space-y-8 max-w-7xl">
@@ -44,11 +44,8 @@ export default async function ProjectsPage() {
             <h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 sm:text-6xl font-display">
               Projects
             </h1>
-            <p className="mt-6 text-lg leading-8 text-zinc-300">
-              Some of the projects are from work and some are on my own time.
-            </p>
           </div>
-        <div className="w-full h-px bg-zinc-800" />
+        <div className="w-full h-px bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200" />
 
         <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
           <Card>

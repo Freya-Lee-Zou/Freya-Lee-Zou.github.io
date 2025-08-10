@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 import Particles from "./components/particles";
+import { ThemeToggle } from "./components/theme-toggle";
 
 const navigation = [
   { name: "Education", href: "/education" },
@@ -11,14 +13,19 @@ const navigation = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+    <div className="flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black dark:bg-gradient-to-tl dark:from-black dark:via-zinc-600/20 dark:to-black light:bg-gradient-to-tl light:from-white light:via-gray-100 light:to-white">
+      {/* Theme toggle in top right */}
+      <div className="fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
+      
       <nav className="my-16 animate-fade-in">
-        <ul className="flex items-center justify-center gap-4">
+        <ul className="flex items-center justify-center gap-6">
           {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm duration-500 text-zinc-500 hover:text-zinc-300"
+              className="text-lg font-semibold duration-500 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
             >
               {item.name}
             </Link>
@@ -30,7 +37,29 @@ export default function Home() {
         className="absolute inset-0 -z-10 animate-fade-in"
         quantity={100}
       />
-      <h1 className="py-3.5 px-0.5 z-10 text-4xl text-transparent duration-1000 cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">
+      
+      {/* Professional Profile Photo */}
+      <div className="relative z-10 mb-8 animate-fade-in">
+        <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56">
+          {/* Gradient border container */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 p-1 shadow-2xl hover:scale-105 transition-transform duration-300">
+            <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900">
+              <Image
+                src="/Freya.JPG"
+                alt="Freya Zou Profile Photo"
+                width={224}
+                height={224}
+                className="w-full h-full object-cover rounded-full"
+                priority
+              />
+            </div>
+          </div>
+          {/* Subtle glow effect */}
+          <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-blue-400/20 via-cyan-500/20 to-teal-400/20 animate-pulse blur-md -z-10"></div>
+        </div>
+      </div>
+      
+      <h1 className="py-3.5 px-0.5 z-10 text-3xl text-transparent duration-1000 cursor-default text-edge-outline animate-title font-display sm:text-5xl md:text-7xl whitespace-nowrap bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">
         Freya Zou
       </h1>
 
