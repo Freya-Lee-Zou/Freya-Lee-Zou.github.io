@@ -8,7 +8,7 @@ const education = [
 		degree: "Bachelor of Science in Computer Science",
 		school: "Oregon State University",
 		location: "Corvallis, OR",
-		period: "Sept 2021 - Current",
+		period: "Sept 2021 - March 2025",
 		description: "Currently pursuing a comprehensive computer science education with focus on software development, algorithms, and system design. Maintaining excellent academic performance while actively engaged in coursework and projects.",
 		achievements: [
 			"GPA: 3.95/4.0",
@@ -54,8 +54,8 @@ export default function EducationPage() {
 	return (
 		<div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
 			<Navigation />
-			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-				<div className="w-full mx-auto mt-32 sm:mt-0 space-y-8 max-w-4xl">
+			<div className="container px-4 mx-auto py-20">
+				<div className="w-full mx-auto mt-20 space-y-8 max-w-6xl">
 					{/* Header */}
 					<div className="text-center">
 						<h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 sm:text-6xl font-display">
@@ -98,15 +98,15 @@ export default function EducationPage() {
 											</div>
 										</div>
 										
-										<p className="text-zinc-300 leading-relaxed">
+										<p className="text-zinc-300 leading-relaxed break-words">
 											{edu.description}
 										</p>
 										
 										<div className="space-y-2">
 											<h4 className="font-medium text-zinc-200">Key Achievements:</h4>
-											<ul className="list-disc list-inside space-y-1 text-zinc-400">
+											<ul className="list-disc list-inside space-y-2 text-zinc-400">
 												{edu.achievements.map((achievement, idx) => (
-													<li key={idx}>{achievement}</li>
+													<li key={idx} className="break-words leading-relaxed">{achievement}</li>
 												))}
 											</ul>
 										</div>

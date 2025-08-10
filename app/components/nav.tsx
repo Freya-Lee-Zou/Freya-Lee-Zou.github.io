@@ -1,5 +1,4 @@
 "use client";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -19,13 +18,7 @@ export const Navigation: React.FC = () => {
 
 	return (
 		<header ref={ref}>
-			<div
-				className={`fixed inset-x-0 top-0 z-50 backdrop-blur  duration-200 border-b  ${
-					isIntersecting
-						? "bg-zinc-900/0 border-transparent"
-						: "bg-zinc-900/500  border-zinc-800 "
-				}`}
-			>
+			<div className="fixed inset-x-0 top-0 z-50 duration-200 bg-gradient-to-b from-zinc-900/50 via-zinc-900/20 to-transparent">
 				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
 					<div className="flex justify-between gap-8">
 						<Link
@@ -56,9 +49,58 @@ export const Navigation: React.FC = () => {
 
 					<Link
 						href="/"
-						className="duration-200 text-zinc-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-500 hover:to-teal-400"
+						className="duration-200 text-zinc-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-500 hover:to-teal-400 flex items-center"
 					>
-						<ArrowLeft className="w-6 h-6 " />
+						<svg 
+							width="32" 
+							height="32" 
+							viewBox="0 0 32 32" 
+							className="transition-all duration-200 hover:scale-110"
+							fill="none" 
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							{/* Outer circle with gradient stroke */}
+							<circle 
+								cx="16" 
+								cy="16" 
+								r="14" 
+								stroke="url(#gradient)" 
+								strokeWidth="2" 
+								fill="none"
+							/>
+							
+							{/* Inner geometric pattern */}
+							<path 
+								d="M8 16L14 10L18 14L24 8" 
+								stroke="url(#gradient)" 
+								strokeWidth="2" 
+								strokeLinecap="round" 
+								strokeLinejoin="round"
+								fill="none"
+							/>
+							
+							{/* Central diamond */}
+							<path 
+								d="M16 12L20 16L16 20L12 16Z" 
+								fill="url(#gradient)" 
+								opacity="0.6"
+							/>
+							
+							{/* Small accent dots */}
+							<circle cx="16" cy="6" r="1.5" fill="url(#gradient)" />
+							<circle cx="26" cy="16" r="1.5" fill="url(#gradient)" />
+							<circle cx="16" cy="26" r="1.5" fill="url(#gradient)" />
+							<circle cx="6" cy="16" r="1.5" fill="url(#gradient)" />
+							
+							{/* Gradient definition */}
+							<defs>
+								<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+									<stop offset="0%" stopColor="#60a5fa" />
+									<stop offset="50%" stopColor="#06b6d4" />
+									<stop offset="100%" stopColor="#2dd4bf" />
+								</linearGradient>
+							</defs>
+						</svg>
 					</Link>
 				</div>
 			</div>

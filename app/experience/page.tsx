@@ -8,7 +8,7 @@ const workExperience = [
 		company: "Amazon",
 		position: "Software Dev Engineer I",
 		location: "Seattle, WA",
-		period: "May 2024 - Current",
+		period: "2025 - Current",
 		description: "Enabled communication between two platforms by utilizing Sharelink microservice as the intermediary, leveraging Java, Python, the Vue.js framework, and AWS services to enhance content-sharing capabilities.",
 		achievements: []
 	},
@@ -31,16 +31,14 @@ export default function ExperiencePage() {
 	return (
 		<div className="bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
 			<Navigation />
-			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-				<div className="w-full mx-auto mt-32 sm:mt-0 space-y-8 max-w-4xl">
+			<div className="container px-4 mx-auto py-20">
+				<div className="w-full mx-auto mt-20 space-y-8 max-w-6xl">
 					{/* Header */}
 					<div className="text-center">
 						<h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 sm:text-6xl font-display">
 							Work Experience
 						</h1>
-						<p className="mt-6 text-lg leading-8 text-zinc-300">
-							My professional journey in software development
-						</p>
+
 					</div>
 
 					{/* Work Experience Section */}
@@ -75,16 +73,16 @@ export default function ExperiencePage() {
 											</div>
 										</div>
 										
-										<p className="text-zinc-300 leading-relaxed">
+										<p className="text-zinc-300 leading-relaxed break-words">
 											{work.description}
 										</p>
 										
 										{work.achievements.length > 0 && (
 											<div className="space-y-2">
 												<h4 className="font-medium text-zinc-200">Key Accomplishments:</h4>
-												<ul className="list-disc list-inside space-y-1 text-zinc-400">
+												<ul className="list-disc list-inside space-y-2 text-zinc-400">
 													{work.achievements.map((achievement, idx) => (
-														<li key={idx}>{achievement}</li>
+														<li key={idx} className="break-words leading-relaxed">{achievement}</li>
 													))}
 												</ul>
 											</div>

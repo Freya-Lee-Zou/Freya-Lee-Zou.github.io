@@ -29,8 +29,14 @@ export default function Example() {
 	return (
 		<div className=" bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
 			<Navigation />
-			<div className="container flex items-center justify-center min-h-screen px-4 mx-auto">
-				<div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-16 max-w-6xl">
+			<div className="container px-4 mx-auto py-20">
+				<div className="w-full mx-auto mt-20 space-y-8 max-w-6xl">
+					<div className="text-center">
+						<h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 sm:text-6xl font-display">
+							Contact
+						</h1>
+					</div>
+					<div className="grid w-full grid-cols-1 gap-8 mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-16">
 					{socials.map((s) => (
 						<Card>
 							<Link
@@ -56,6 +62,7 @@ export default function Example() {
 							</Link>
 						</Card>
 					))}
+					</div>
 				</div>
 			</div>
 		</div>
