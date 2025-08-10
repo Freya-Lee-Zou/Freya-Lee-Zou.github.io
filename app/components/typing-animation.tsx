@@ -15,8 +15,15 @@ export const TypingAnimation: React.FC<TypingAnimationProps> = ({
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     let timeout: NodeJS.Timeout;
     
     if (isTyping) {
@@ -43,12 +50,22 @@ export const TypingAnimation: React.FC<TypingAnimationProps> = ({
     return () => {
       if (timeout) clearTimeout(timeout);
     };
-  }, [currentTextIndex, isTyping, texts, speed, delay]);
+  }, [currentTextIndex, isTyping, texts, speed, delay, mounted]);
+
+  // Fallback for SSR
+  if (!mounted) {
+    return (
+      <span className="inline-block">
+        {texts[0]}
+        <span className="typing-cursor">|</span>
+      </span>
+    );
+  }
 
   return (
     <span className="inline-block">
       {currentText}
-      <span className="typing-cursor">•</span>
+      <span className="typing-cursor">|</span>
     </span>
   );
 };

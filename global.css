@@ -85,10 +85,11 @@
   .typing-cursor {
     display: inline-block;
     color: #22d3ee; /* cyan-400 */
-    font-weight: normal;
-    animation: blink 1.5s infinite;
-    margin-left: 4px;
-    opacity: 0.8;
+    font-weight: bold;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    font-size: 1.2em;
+    line-height: 1;
   }
 
   @keyframes blink {
@@ -98,6 +99,12 @@
     51%, 100% {
       opacity: 0;
     }
+  }
+
+  /* Ensure typing animation text is visible */
+  .typing-animation-text {
+    min-height: 1.2em;
+    display: inline-block;
   }
 }
 

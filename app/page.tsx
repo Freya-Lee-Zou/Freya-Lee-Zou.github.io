@@ -59,12 +59,12 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           
           {/* Left Column - Text Content */}
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-8 animate-fade-in order-2 lg:order-1">
             {/* Name and Title */}
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
                 <span className="inline-block">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 typing-animation-text">
                     <TypingAnimation 
                       texts={["I'm Freya Zou", "AI Enthusiast", "Problem Solver"]}
                       speed={80}
@@ -102,7 +102,7 @@ export default function Home() {
           </div>
           
           {/* Right Column - Profile Image */}
-          <div className="flex justify-center lg:justify-end animate-fade-in">
+          <div className="flex justify-center lg:justify-end animate-fade-in order-1 lg:order-2">
             <div className="relative">
               {/* 3D Sphere Profile Image Container */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 group">
