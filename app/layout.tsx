@@ -6,19 +6,19 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "freyazou.com",
+    template: "%s | freyazou.com",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Freya Zou - Software Engineer at Amazon, specializing in AI, software development, and system design",
   openGraph: {
-    title: "chronark.com",
+    title: "freyazou.com",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+      "Freya Zou - Software Engineer at Amazon, specializing in AI, software development, and system design",
+    url: "https://freyazou.com",
+    siteName: "freyazou.com",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "https://freyazou.com/og.png",
         width: 1920,
         height: 1080,
       },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "Freya Zou",
     card: "summary_large_image",
   },
   icons: {
