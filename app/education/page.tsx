@@ -29,26 +29,7 @@ const education = [
 ];
 
 
-const certifications = [
-	{
-		title: "AWS Certified Solutions Architect",
-		issuer: "Amazon Web Services",
-		date: "2023",
-		credentialId: "AWS-SAA-123456"
-	},
-	{
-		title: "Google Cloud Professional Developer",
-		issuer: "Google Cloud",
-		date: "2023",
-		credentialId: "GCP-PD-789012"
-	},
-	{
-		title: "React Developer Certification",
-		issuer: "Meta",
-		date: "2022",
-		credentialId: "META-RD-345678"
-	}
-];
+
 
 export default function EducationPage() {
 	return (
@@ -61,9 +42,7 @@ export default function EducationPage() {
 						<h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 sm:text-6xl font-display">
 							Education
 						</h1>
-						<p className="mt-6 text-lg leading-8 text-zinc-300">
-							My academic journey and professional certifications
-						</p>
+
 					</div>
 
 					{/* Education Section */}
@@ -109,36 +88,6 @@ export default function EducationPage() {
 													<li key={idx} className="break-words leading-relaxed">{achievement}</li>
 												))}
 											</ul>
-										</div>
-									</div>
-								</Card>
-							))}
-						</div>
-					</div>
-
-
-
-					{/* Certifications Section */}
-					<div className="space-y-8">
-						<h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">
-							Professional Certifications
-						</h2>
-						
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-							{certifications.map((cert, index) => (
-								<Card key={index}>
-									<div className="p-6 space-y-3">
-										<h3 className="text-lg font-semibold text-zinc-100">
-											{cert.title}
-										</h3>
-										<p className="text-zinc-300">
-											{cert.issuer}
-										</p>
-										<div className="flex justify-between items-center text-sm text-zinc-400">
-											<span>{cert.date}</span>
-											<span className="font-mono text-xs">
-												{cert.credentialId}
-											</span>
 										</div>
 									</div>
 								</Card>

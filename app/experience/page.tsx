@@ -8,15 +8,19 @@ const workExperience = [
 		company: "Amazon",
 		position: "Software Dev Engineer I",
 		location: "Seattle, WA",
-		period: "2025 - Current",
-		description: "Enabled communication between two platforms by utilizing Sharelink microservice as the intermediary, leveraging Java, Python, the Vue.js framework, and AWS services to enhance content-sharing capabilities.",
-		achievements: []
+		period: "October 2024 - Current",
+		description: "Developing and maintaining enterprise-scale applications and cloud services using Java, Python, and Vue.js framework. Working on cross-platform communication solutions and microservice architecture improvements.",
+		achievements: [
+			"Developing cross-platform communication solutions using Java, Python, and Vue.js framework",
+			"Participating in code reviews, architecture discussions, and technical design decisions",
+			"Working on microservice architecture improvements and AWS cloud services integration"
+		]
 	},
 	{
 		company: "Amazon",
 		position: "Software Dev Engineer Intern",
 		location: "Bellevue, WA",
-		period: "June 2024 - Sept. 2024",
+		period: "June 2024 - September 2024",
 		description: "Comprehensive software development internship working on enterprise-scale applications and cloud services.",
 		achievements: [
 			"Enabled communication between two platforms by utilizing Sharelink microservice as the intermediary, leveraging Java, Python, the Vue.js framework, and AWS services to enhance content-sharing capabilities",
@@ -106,7 +110,7 @@ export default function ExperiencePage() {
 										Programming Languages
 									</h3>
 									<div className="flex flex-wrap gap-2">
-										{["Java", "Python", "JavaScript", "TypeScript"].map((skill) => (
+										{["Java", "Python", "JavaScript", "TypeScript", "C/C++", "Kotlin", "R"].map((skill) => (
 											<span key={skill} className="px-3 py-1 text-sm bg-zinc-800 text-zinc-300 rounded-full">
 												{skill}
 											</span>
@@ -121,7 +125,7 @@ export default function ExperiencePage() {
 										Frameworks & Libraries
 									</h3>
 									<div className="flex flex-wrap gap-2">
-										{["Vue.js", "React", "Node.js", "Spring Boot"].map((skill) => (
+										{["Vue.js", "React", "Node.js", "Express", "ASP.Net", "Spring Boot"].map((skill) => (
 											<span key={skill} className="px-3 py-1 text-sm bg-zinc-800 text-zinc-300 rounded-full">
 												{skill}
 											</span>
@@ -136,7 +140,7 @@ export default function ExperiencePage() {
 										Cloud & Tools
 									</h3>
 									<div className="flex flex-wrap gap-2">
-										{["AWS", "S3", "Athena", "Docker", "Git", "Cypress"].map((skill) => (
+										{["AWS", "S3", "Athena", "Docker", "Git", "MongoDB", "SQLite", "Jest", "Cypress"].map((skill) => (
 											<span key={skill} className="px-3 py-1 text-sm bg-zinc-800 text-zinc-300 rounded-full">
 												{skill}
 											</span>
