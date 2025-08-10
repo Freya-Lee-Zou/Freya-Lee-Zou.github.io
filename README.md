@@ -1,6 +1,6 @@
 <div align="center">
-    <a href="https://
-Freya-Lee-Zou.github.io"><h1 align="center">chronark.com</h1></a>
+    <a href="[https://
+Freya-Lee-Zou.github.io](https://freya-lee-zou.github.io/)"><h1 align="center">freya.com</h1></a>
 
 
 
