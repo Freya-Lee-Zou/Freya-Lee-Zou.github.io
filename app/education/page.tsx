@@ -9,7 +9,7 @@ const education = [
 		school: "Oregon State University",
 		location: "Corvallis, OR",
 		period: "Sept 2021 - March 2025",
-		description: "Currently pursuing a comprehensive computer science education with focus on software development, algorithms, and system design. Maintaining excellent academic performance while actively engaged in coursework and projects.",
+		description: "Graduated with comprehensive computer science education with focus on AI, software development, algorithms, and system design. Demonstrated strong analytical and problem-solving skills while maintaining excellent academic performance throughout the program.",
 		achievements: [
 			"GPA: 3.95/4.0",
 			"Dean's List"

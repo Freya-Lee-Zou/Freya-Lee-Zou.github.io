@@ -60,7 +60,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           
           {/* Left Column - Text Content */}
-          <div className="space-y-8 animate-fade-in order-2 lg:order-1">
+          <div className="space-y-8 order-2 lg:order-1">
             {/* Name and Title */}
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
@@ -95,7 +95,7 @@ export default function Home() {
             <div className="pt-6">
               <div className="relative inline-block group">
                 {/* Animated gradient border with pulsing effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse pointer-events-none"></div>
                 
                 {/* Floating particles around the button */}
                 <div className="absolute -inset-8 pointer-events-none">
@@ -133,7 +133,7 @@ export default function Home() {
                 </Link>
                 
                 {/* Magnetic attraction effect - subtle glow on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-cyan-400/10 to-teal-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl scale-150 group-hover:scale-100"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-cyan-400/10 to-teal-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl scale-150 group-hover:scale-100 pointer-events-none"></div>
               </div>
               
 
@@ -141,7 +141,7 @@ export default function Home() {
           </div>
           
           {/* Right Column - Profile Image */}
-          <div className="flex justify-center lg:justify-end animate-fade-in order-1 lg:order-2">
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative">
               {/* 3D Sphere Profile Image Container */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 group">
@@ -162,6 +162,8 @@ export default function Home() {
                       height={400}
                       className="w-full h-full object-cover rounded-full transform scale-105 group-hover:scale-110 transition-transform duration-500"
                       priority
+                      loading="eager"
+                      fetchPriority="high"
                     />
                     
                     {/* Overlay for professional consistency */}
@@ -188,7 +190,7 @@ export default function Home() {
       
       {/* Background Particles */}
       <Particles
-        className="absolute inset-0 -z-10 animate-fade-in"
+        className="absolute inset-0 -z-10"
         quantity={100}
       />
     </div>
