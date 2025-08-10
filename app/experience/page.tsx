@@ -9,11 +9,13 @@ const workExperience = [
 		position: "Software Dev Engineer I",
 		location: "Seattle, WA",
 		period: "2025 - Current",
-		description: "Developing and maintaining enterprise-scale applications and cloud services using Java, Python, and Vue.js framework. Working on cross-platform communication solutions and microservice architecture improvements.",
+		description: "Working on Alexa-PAPI (Alexa Personal Assistant Programming Interface) development and maintenance using Java, TypeScript, comprehensive Java test frameworks, CI/CD pipeline, and AWS CloudWatch monitoring services. Currently focused on reducing latency for Alexa Echo Show devices.",
 		achievements: [
-			"Developing cross-platform communication solutions using Java, Python, and Vue.js framework",
-			"Participating in code reviews, architecture discussions, and technical design decisions",
-			"Working on microservice architecture improvements and AWS cloud services integration"
+			"Developing and maintaining Alexa-PAPI services using Java, TypeScript, and comprehensive Java test frameworks",
+			"Implementing comprehensive testing strategies including unit tests, integration tests, and end-to-end testing",
+			"Working on performance optimization projects to reduce latency for Alexa Echo Show devices",
+			"Managing CI/CD pipeline for automated testing, building, and deployment of Alexa services",
+			"Utilizing AWS CloudWatch for monitoring, logging, and performance optimization of Alexa services"
 		]
 	},
 	{

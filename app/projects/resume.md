@@ -19,9 +19,9 @@ May 2015 - May 2020 | GPA: 4.73/5.0
 ## Work Experience
 **Amazon** | Seattle, WA
 **Software Dev Engineer I** | October 2024 - Current
-• Developing and maintaining enterprise-scale applications and cloud services using Java, Python, and Vue.js framework
-• Working on cross-platform communication solutions and microservice architecture improvements
-• Participating in code reviews, architecture discussions, and technical design decisions
+• Working on Alexa-PAPI (Alexa Personal Assistant Programming Interface) development and maintenance using Java, TypeScript, comprehensive Java test frameworks, CI/CD pipeline, and AWS CloudWatch monitoring services
+• Currently focused on reducing latency for Alexa Echo Show devices through performance optimization projects
+• Participating in code reviews, architecture discussions, and technical design decisions for Alexa platform improvements
 
 **Amazon** | Bellevue, WA
 **Software Dev Engineer Intern** | June 2024 - September 2024
