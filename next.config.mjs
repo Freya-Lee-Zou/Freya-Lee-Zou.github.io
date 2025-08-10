@@ -11,8 +11,8 @@ const nextConfig = {
 	images: {
 		unoptimized: true,
 	},
-	basePath: process.env.NODE_ENV === 'production' ? '/freya_portfolio' : '',
-	assetPrefix: process.env.NODE_ENV === 'production' ? '/freya_portfolio/' : '',
+	basePath: '',
+	assetPrefix: '',
 };
 
 export default withContentlayer(nextConfig);
