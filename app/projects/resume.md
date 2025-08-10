@@ -1,7 +1,7 @@
 # Freya Zou
 
 **Contact Information:**
-- Email: freyaleezou1998@gmail.com
+- Email: freyazou1@gmail.com
 - Phone: +1 (458) 272-8896
 - GitHub: github.com/Freya-Lee-Zou
 - LinkedIn: linkedin.com/in/freya-zou-068615252/

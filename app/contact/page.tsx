@@ -1,5 +1,5 @@
 "use client";
-import { Github, Mail, Linkedin } from "lucide-react";
+import { Github, Mail, Linkedin, ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
@@ -13,9 +13,9 @@ const socials = [
 	},
 	{
 		icon: <Mail size={20} />,
-		href: "mailto:freyaleezou1998@gmail.com",
+		href: "mailto:freyazou1@gmail.com",
 		label: "Email",
-		handle: "freyaleezou1998@gmail.com",
+		handle: "freyazou1@gmail.com",
 	},
 	{
 		icon: <Github size={20} />,
@@ -35,10 +35,34 @@ export default function Example() {
 						<h1 className="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 sm:text-6xl font-display">
 							Contact
 						</h1>
+
 					</div>
+
+					{/* Custom Contact Button */}
+					<div className="text-center">
+						<div className="relative inline-block group">
+							{/* Gradient Border Effect */}
+							<div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+							
+							{/* Main Button */}
+							<Link
+								href="mailto:freyazou1@gmail.com"
+								className="relative inline-flex items-center justify-center px-8 py-4 bg-black border border-zinc-800 rounded-2xl text-white font-semibold text-lg transition-all duration-300 group-hover:bg-zinc-900 group-hover:border-zinc-700 group-hover:scale-105 shadow-2xl"
+							>
+								<span className="mr-3">Get In Touch</span>
+								<ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-blue-400" />
+								
+								{/* Hover Glow Effect */}
+								<div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-teal-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+							</Link>
+						</div>
+					</div>
+
+					<div className="w-full h-px bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200" />
+
 					<div className="grid w-full grid-cols-1 gap-8 mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 					{socials.map((s) => (
-						<Card>
+						<Card key={s.label}>
 							<Link
 								href={s.href}
 								target="_blank"
@@ -62,6 +86,31 @@ export default function Example() {
 							</Link>
 						</Card>
 					))}
+					</div>
+
+					<div className="w-full h-px bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200" />
+
+					{/* Resume Section */}
+					<div className="text-center">
+						<h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 sm:text-4xl font-display">
+							Resume
+						</h2>
+						<p className="mt-4 text-lg text-zinc-400 max-w-2xl mx-auto">
+							Download my detailed resume below.
+						</p>
+					</div>
+
+					{/* Download Resume Button */}
+					<div className="text-center">
+						<a
+							href="/Freya_Zou_Resume.pdf"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center px-8 py-4 bg-white text-black font-semibold rounded-2xl hover:bg-zinc-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+						>
+							<Download className="w-5 h-5 mr-3" />
+							Download PDF Resume
+						</a>
 					</div>
 				</div>
 			</div>

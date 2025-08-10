@@ -9,7 +9,7 @@ const navigation = [
   { name: "Education", href: "/education" },
   { name: "Experience", href: "/experience" },
   { name: "Projects", href: "/projects" },
-  { name: "Resume", href: "/resume" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Home() {
@@ -92,13 +92,51 @@ export default function Home() {
             </div>
             
             {/* Call to Action Button */}
-            <div className="pt-4">
-              <Link
-                href="/contact"
-                className="inline-block px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-zinc-100 transition-colors duration-300 transform hover:scale-105"
-              >
-                CONTACT ME
-              </Link>
+            <div className="pt-6">
+              <div className="relative inline-block group">
+                {/* Animated gradient border with pulsing effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                
+                {/* Floating particles around the button */}
+                <div className="absolute -inset-8 pointer-events-none">
+                  <div className="absolute top-0 left-0 w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+                  <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-cyan-500 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+                  <div className="absolute bottom-0 left-0 w-1 h-1 bg-teal-400 rounded-full animate-bounce" style={{ animationDelay: '0.6s' }}></div>
+                  <div className="absolute bottom-0 right-0 w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.9s' }}></div>
+                </div>
+                
+                {/* Main button with 3D effects */}
+                <Link
+                  href="/contact"
+                  className="relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 border border-transparent rounded-2xl text-white font-bold text-xl tracking-wider transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-blue-500/25 transform hover:rotate-1 z-20"
+                >
+                  {/* Shimmer effect overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                  
+                  {/* Button text with glow effect */}
+                  <span className="relative z-30 text-white drop-shadow-lg group-hover:drop-shadow-2xl group-hover:drop-shadow-blue-400/50">
+                    CONTACT ME
+                  </span>
+                  
+                  {/* Animated arrow icon */}
+                  <svg 
+                    className="w-6 h-6 ml-3 transform transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110 group-hover:text-yellow-300 relative z-30" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                  
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-teal-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm pointer-events-none"></div>
+                </Link>
+                
+                {/* Magnetic attraction effect - subtle glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-cyan-400/10 to-teal-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl scale-150 group-hover:scale-100"></div>
+              </div>
+              
+
             </div>
           </div>
           

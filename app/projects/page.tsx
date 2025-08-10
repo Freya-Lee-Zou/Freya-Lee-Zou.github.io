@@ -67,8 +67,8 @@ export default async function ProjectsPage() {
 
           {/* AI & Machine Learning Section */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 border-b border-zinc-800 pb-2">
-              🤖 AI & Machine Learning
+            <h2 className="text-2xl font-bold tracking-tight border-b border-zinc-800 pb-2">
+              <span className="text-white">🤖</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">AI & Machine Learning</span>
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {sortedAiML.map((project) => (
@@ -83,8 +83,8 @@ export default async function ProjectsPage() {
 
           {/* Mobile & Web Development Section */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 border-b border-zinc-800 pb-2">
-              📱 Mobile & Web Development
+            <h2 className="text-2xl font-bold tracking-tight border-b border-zinc-800 pb-2">
+              <span className="text-white">📱</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">Mobile & Web Development</span>
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {sortedMobileWeb.map((project) => (
