@@ -85,9 +85,10 @@
   .typing-cursor {
     display: inline-block;
     color: #22d3ee; /* cyan-400 */
-    font-weight: bold;
-    animation: blink 1s infinite;
-    margin-left: 2px;
+    font-weight: normal;
+    animation: blink 1.5s infinite;
+    margin-left: 4px;
+    opacity: 0.8;
   }
 
   @keyframes blink {

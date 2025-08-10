@@ -48,7 +48,7 @@ export const TypingAnimation: React.FC<TypingAnimationProps> = ({
   return (
     <span className="inline-block">
       {currentText}
-      <span className="typing-cursor">|</span>
+      <span className="typing-cursor">•</span>
     </span>
   );
 };

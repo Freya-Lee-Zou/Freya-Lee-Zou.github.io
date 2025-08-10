@@ -66,7 +66,7 @@ export default function Home() {
                 <span className="inline-block">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">
                     <TypingAnimation 
-                      texts={["I'm Freya Zou", "Hello World!", "AI Enthusiast", "Problem Solver"]}
+                      texts={["I'm Freya Zou", "AI Enthusiast", "Problem Solver"]}
                       speed={80}
                       delay={3000}
                     />
