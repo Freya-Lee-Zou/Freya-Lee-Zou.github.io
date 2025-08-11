@@ -78,8 +78,8 @@ export const Navigation: React.FC = () => {
 						</svg>
 					</Link>
 
-					{/* Navigation links in the center - using flex-1 to push theme toggle to the right */}
-					<div className="flex-1 flex justify-center gap-8">
+					{/* Navigation links in their original position - not centered */}
+					<div className="flex gap-8">
 						<Link
 							href="/education"
 							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
