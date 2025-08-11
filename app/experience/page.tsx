@@ -68,8 +68,16 @@ export default function ExperiencePage() {
 												</p>
 												<div className="flex flex-col sm:flex-row gap-4 text-sm text-zinc-400">
 													<div className="flex items-center gap-2">
-														<MapPin className="w-4 h-4" />
-														{work.location}
+														<a
+															href={`https://www.google.com/maps/search/${encodeURIComponent(work.location)}`}
+															target="_blank"
+															rel="noopener noreferrer"
+															className="flex items-center gap-2 hover:text-blue-400 transition-colors cursor-pointer group"
+															title={`View ${work.location} on Google Maps`}
+														>
+															<MapPin className="w-4 h-4 group-hover:text-blue-400 transition-colors" />
+															<span className="group-hover:text-blue-400 transition-colors">{work.location}</span>
+														</a>
 													</div>
 													<div className="flex items-center gap-2">
 														<Calendar className="w-4 h-4" />
@@ -93,6 +101,8 @@ export default function ExperiencePage() {
 												</ul>
 											</div>
 										)}
+										
+
 									</div>
 								</Card>
 							))}

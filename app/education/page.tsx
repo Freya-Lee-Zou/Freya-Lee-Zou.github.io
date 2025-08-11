@@ -66,8 +66,16 @@ export default function EducationPage() {
 												</p>
 												<div className="flex flex-col sm:flex-row gap-4 text-sm text-zinc-400">
 													<div className="flex items-center gap-2">
-														<MapPin className="w-4 h-4" />
-														{edu.location}
+														<a
+															href={`https://www.google.com/maps/search/${encodeURIComponent(edu.location)}`}
+															target="_blank"
+															rel="noopener noreferrer"
+															className="flex items-center gap-2 hover:text-blue-400 transition-colors cursor-pointer group"
+															title={`View ${edu.location} on Google Maps`}
+														>
+															<MapPin className="w-4 h-4 group-hover:text-blue-400 transition-colors" />
+															<span className="group-hover:text-blue-400 transition-colors">{edu.location}</span>
+														</a>
 													</div>
 													<div className="flex items-center gap-2">
 														<Calendar className="w-4 h-4" />
@@ -89,6 +97,8 @@ export default function EducationPage() {
 												))}
 											</ul>
 										</div>
+										
+
 									</div>
 								</Card>
 							))}
