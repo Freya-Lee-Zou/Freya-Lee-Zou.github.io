@@ -20,7 +20,7 @@ export const Navigation: React.FC = () => {
 	return (
 		<header ref={ref}>
 			<div className="fixed inset-x-0 top-0 z-50 duration-200 bg-gradient-to-b from-zinc-900/50 via-zinc-900/20 to-transparent dark:from-zinc-900/50 dark:via-zinc-900/20 dark:to-transparent light:from-white/80 light:via-white/40 light:to-transparent">
-				<div className="container flex items-center justify-between p-6 mx-auto">
+				<div className="container flex items-center p-6 mx-auto">
 					{/* Logo on the left */}
 					<Link
 						href="/"
@@ -78,8 +78,8 @@ export const Navigation: React.FC = () => {
 						</svg>
 					</Link>
 
-					{/* Navigation links in the center */}
-					<div className="flex justify-center gap-8">
+					{/* Navigation links in the center - using flex-1 to push theme toggle to the right */}
+					<div className="flex-1 flex justify-center gap-8">
 						<Link
 							href="/education"
 							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
@@ -100,8 +100,8 @@ export const Navigation: React.FC = () => {
 						</Link>
 					</div>
 
-					{/* Theme toggle on the right */}
-					<div className="flex items-center">
+					{/* Theme toggle pushed to the absolute right */}
+					<div className="flex items-center ml-auto">
 						<ThemeToggle />
 					</div>
 				</div>
