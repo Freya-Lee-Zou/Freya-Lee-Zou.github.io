@@ -42,12 +42,7 @@ export const Navigation: React.FC = () => {
 						>
 							Projects
 						</Link>
-						<Link
-							href="/contact"
-							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
-						>
-							Contact
-						</Link>
+
 
 						</div>
 					</div>

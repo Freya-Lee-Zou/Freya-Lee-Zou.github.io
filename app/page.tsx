@@ -9,7 +9,6 @@ const navigation = [
   { name: "Education", href: "/education" },
   { name: "Experience", href: "/experience" },
   { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
 ];
 
 export default function Home() {
@@ -27,7 +26,13 @@ export default function Home() {
             {/* Custom Logo with 3D effect */}
             <div className="flex items-center">
               <div className="relative w-12 h-12 rounded-full bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300 group">
-                <span className="text-white font-bold text-lg relative z-10">FZ</span>
+                {/* Custom FZ Logo SVG */}
+                <svg className="w-7 h-7 relative z-10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* F letter - stylized and modern */}
+                  <path d="M8 6h14v3h-11v3h9v3h-9v4h-3V6z" fill="white"/>
+                  {/* Z letter - stylized and modern */}
+                  <path d="M10 20h12l-12 6h12v-2l-10-2h10v-2h-12l12-6h-12v2l10 2h-10v2z" fill="white"/>
+                </svg>
                 {/* 3D depth effect */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-transparent to-black/30"></div>
                 {/* Subtle glow */}
