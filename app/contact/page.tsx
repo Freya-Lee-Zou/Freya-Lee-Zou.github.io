@@ -38,23 +38,25 @@ export default function Example() {
 
 					</div>
 
-					{/* Custom Contact Button */}
+					{/* Download Resume Button */}
 					<div className="text-center">
 						<div className="relative inline-block group">
 							{/* Gradient Border Effect */}
 							<div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
 							
 							{/* Main Button */}
-							<Link
-								href="mailto:freyazou1@gmail.com"
+							<a
+								href="/Freya_Zou_Resume.pdf"
+								target="_blank"
+								rel="noopener noreferrer"
 								className="relative inline-flex items-center justify-center px-8 py-4 bg-black border border-zinc-800 rounded-2xl text-white font-semibold text-lg transition-all duration-300 group-hover:bg-zinc-900 group-hover:border-zinc-700 group-hover:scale-105 shadow-2xl"
 							>
-								<span className="mr-3">Get In Touch</span>
-								<ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-blue-400" />
+								<span className="mr-3">Download Resume</span>
+								<Download className="w-5 h-5 transition-transform duration-300 group-hover:scale-110 group-hover:text-blue-400" />
 								
 								{/* Hover Glow Effect */}
 								<div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-teal-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-							</Link>
+							</a>
 						</div>
 					</div>
 
@@ -88,27 +90,7 @@ export default function Example() {
 					))}
 					</div>
 
-					<div className="w-full h-px bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200" />
 
-					{/* Resume Section */}
-					<div className="text-center">
-						<h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 sm:text-4xl font-display">
-							Resume
-						</h2>
-					</div>
-
-					{/* Download Resume Button */}
-					<div className="text-center">
-						<a
-							href="/Freya_Zou_Resume.pdf"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center px-8 py-4 bg-white text-black font-semibold rounded-2xl hover:bg-zinc-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-						>
-							<Download className="w-5 h-5 mr-3" />
-							Download PDF Resume
-						</a>
-					</div>
 				</div>
 			</div>
 		</div>
