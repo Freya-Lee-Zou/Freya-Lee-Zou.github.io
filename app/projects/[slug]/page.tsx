@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { allProjects } from "contentlayer/generated";
 import { Mdx } from "@/app/components/mdx";
 import { Header } from "./header";
+import { Navigation } from "@/app/components/nav";
 import "./mdx.css";
 import { ReportView } from "./view";
 // import { Redis } from "@upstash/redis";
@@ -37,6 +38,7 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <div className="bg-black dark:bg-black light:bg-zinc-50 min-h-screen">
+      <Navigation />
       <Header project={project} views={views} />
       <ReportView slug={project.slug} />
 

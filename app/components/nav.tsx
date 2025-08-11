@@ -20,36 +20,11 @@ export const Navigation: React.FC = () => {
 	return (
 		<header ref={ref}>
 			<div className="fixed inset-x-0 top-0 z-50 duration-200 bg-gradient-to-b from-zinc-900/50 via-zinc-900/20 to-transparent dark:from-zinc-900/50 dark:via-zinc-900/20 dark:to-transparent light:from-white/80 light:via-white/40 light:to-transparent">
-				<div className="container flex flex-row-reverse items-center justify-between p-6 mx-auto">
-					<div className="flex items-center gap-6">
-						<ThemeToggle />
-						<div className="flex justify-between gap-8">
-						<Link
-							href="/education"
-							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
-						>
-							Education
-						</Link>
-						<Link
-							href="/experience"
-							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
-						>
-							Experience
-						</Link>
-						<Link
-							href="/projects"
-							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
-						>
-							Projects
-						</Link>
-
-
-						</div>
-					</div>
-
+				<div className="container flex items-center justify-between p-6 mx-auto">
+					{/* Logo on the left */}
 					<Link
 						href="/"
-						className="duration-200 text-zinc-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-500 hover:to-teal-400 flex items-center"
+						className="duration-200 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:via-cyan-500 hover:to-teal-400 flex items-center"
 					>
 						<svg 
 							width="32" 
@@ -102,6 +77,33 @@ export const Navigation: React.FC = () => {
 							</defs>
 						</svg>
 					</Link>
+
+					{/* Navigation links in the center */}
+					<div className="flex justify-center gap-8">
+						<Link
+							href="/education"
+							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
+						>
+							Education
+						</Link>
+						<Link
+							href="/experience"
+							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
+						>
+							Experience
+						</Link>
+						<Link
+							href="/projects"
+							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
+						>
+							Projects
+						</Link>
+					</div>
+
+					{/* Theme toggle on the right */}
+					<div className="flex items-center">
+						<ThemeToggle />
+					</div>
 				</div>
 			</div>
 		</header>

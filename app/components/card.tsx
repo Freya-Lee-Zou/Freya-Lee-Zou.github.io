@@ -23,12 +23,12 @@ export const Card: React.FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<div
 			onMouseMove={onMouseMove}
-			className="card overflow-hidden relative duration-700 border rounded-xl hover:bg-zinc-800/10 dark:hover:bg-zinc-800/10 light:hover:bg-zinc-200/50 group md:gap-8 hover:border-zinc-400/50 dark:hover:border-zinc-400/50 light:hover:border-zinc-300/50 border-zinc-600 dark:border-zinc-600 light:border-zinc-300"
+			className="card overflow-hidden relative duration-700 border rounded-xl hover:bg-zinc-800/10 dark:hover:bg-zinc-800/10 light:hover:bg-zinc-100/50 group md:gap-8 hover:border-zinc-400/50 dark:hover:border-zinc-400/50 light:hover:border-zinc-300/50 border-zinc-600 dark:border-zinc-600 light:border-zinc-300 bg-zinc-900/50 dark:bg-zinc-900/50 light:bg-white/80 backdrop-blur-sm"
 		>
 			<div className="pointer-events-none">
-				<div className="absolute inset-0 z-0  transition duration-1000 [mask-image:linear-gradient(black,transparent)]" />
+				<div className="absolute inset-0 z-0 transition duration-1000 [mask-image:linear-gradient(black,transparent)]" />
 				<motion.div
-					className="absolute inset-0 z-10  bg-gradient-to-br opacity-100  via-zinc-100/10  transition duration-1000 group-hover:opacity-50 "
+					className="absolute inset-0 z-10 bg-gradient-to-br opacity-100 via-zinc-100/10 dark:via-zinc-100/10 light:via-blue-50/20 transition duration-1000 group-hover:opacity-50"
 					style={style}
 				/>
 				<motion.div

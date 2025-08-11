@@ -2,14 +2,8 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import Particles from "./components/particles";
-import { ThemeToggle } from "./components/theme-toggle";
+import { Navigation } from "./components/nav";
 import { TypingAnimation } from "./components/typing-animation";
-
-const navigation = [
-  { name: "Education", href: "/education" },
-  { name: "Experience", href: "/experience" },
-  { name: "Projects", href: "/projects" },
-];
 
 export default function Home() {
   return (
@@ -17,51 +11,7 @@ export default function Home() {
       {/* Professional light mode background pattern */}
       <div className="absolute inset-0 light:bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.03),transparent_50%)] dark:hidden"></div>
       
-      {/* Theme toggle in top right */}
-      <div className="fixed top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
-      
-      {/* Navigation Bar */}
-      <nav className="nav fixed top-0 left-0 right-0 z-40 bg-black/40 dark:bg-black/40 light:bg-white/90 backdrop-blur-md border-b border-zinc-800/50 dark:border-zinc-800/50 light:border-zinc-200/50 shadow-lg">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Custom Logo with 3D effect */}
-            <div className="flex items-center">
-              <div className="relative w-12 h-12 rounded-full bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300 group">
-                {/* Custom FZ Logo SVG */}
-                <svg className="w-7 h-7 relative z-10" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* F letter - stylized and modern */}
-                  <path d="M8 6h14v3h-11v3h9v3h-9v4h-3V6z" fill="white"/>
-                  {/* Z letter - stylized and modern */}
-                  <path d="M10 20h12l-12 6h12v-2l-10-2h10v-2h-12l12-6h-12v2l10 2h-10v2z" fill="white"/>
-                </svg>
-                {/* 3D depth effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-transparent to-black/30"></div>
-                {/* Subtle glow */}
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-500/30 to-teal-400/30 blur-sm opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-              </div>
-            </div>
-            
-            {/* Navigation Links */}
-            <ul className="flex items-center space-x-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="relative text-white dark:text-white light:text-zinc-800 hover:text-blue-400 dark:hover:text-blue-400 light:hover:text-blue-600 transition-all duration-300 font-medium group"
-                >
-                  {item.name}
-                  {/* 3D underline effect */}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 transition-all duration-300 group-hover:w-full"></span>
-                  {/* Subtle glow on hover */}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400/30 via-cyan-500/30 to-teal-400/30 blur-sm transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Main Content - Two Column Layout */}
       <div className="container mx-auto px-6 pt-24 pb-16">

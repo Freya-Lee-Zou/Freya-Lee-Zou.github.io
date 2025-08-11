@@ -55,6 +55,9 @@ export default async function ProjectsPage() {
 
   return (
     <div className="relative pb-16 bg-black dark:bg-black light:bg-white min-h-screen">
+      {/* Professional light mode background pattern */}
+      <div className="absolute inset-0 light:bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.03),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.03),transparent_50%)] dark:hidden"></div>
+      
       <Navigation />
       <div className="container px-4 mx-auto py-20">
         <div className="w-full mx-auto mt-20 space-y-8 max-w-7xl">
@@ -67,8 +70,8 @@ export default async function ProjectsPage() {
 
           {/* AI & Machine Learning Section */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold tracking-tight border-b border-zinc-800 pb-2">
-              <span className="text-white">🤖</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">AI & Machine Learning</span>
+            <h2 className="text-2xl font-bold tracking-tight border-b border-zinc-800 dark:border-zinc-800 light:border-zinc-200 pb-2">
+              <span className="text-white dark:text-white light:text-zinc-800">🤖</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">AI & Machine Learning</span>
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {sortedAiML.map((project) => (
@@ -83,8 +86,8 @@ export default async function ProjectsPage() {
 
           {/* Mobile & Web Development Section */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold tracking-tight border-b border-zinc-800 pb-2">
-              <span className="text-white">📱</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">Mobile & Web Development</span>
+            <h2 className="text-2xl font-bold tracking-tight border-b border-zinc-800 dark:border-zinc-800 light:border-zinc-200 pb-2">
+              <span className="text-white dark:text-white light:text-zinc-800">📱</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">Mobile & Web Development</span>
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {sortedMobileWeb.map((project) => (
@@ -99,8 +102,8 @@ export default async function ProjectsPage() {
 
           {/* Cloud & Infrastructure Section */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 border-b border-zinc-800 pb-2">
-              ☁️ Cloud & Infrastructure
+            <h2 className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 border-b border-zinc-800 dark:border-zinc-800 light:border-zinc-200 pb-2">
+              <span className="text-white dark:text-white light:text-zinc-800">☁️</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400">Cloud & Infrastructure</span>
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {sortedCloudInfra.map((project) => (
