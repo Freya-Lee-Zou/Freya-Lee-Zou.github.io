@@ -124,7 +124,14 @@ export default function Particles({
 			context.current.translate(translateX, translateY);
 			context.current.beginPath();
 			context.current.arc(x, y, size, 0, 2 * Math.PI);
-			context.current.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+			
+			// Different colors for light and dark modes
+			const isLightMode = document.documentElement.classList.contains('light');
+			const particleColor = isLightMode 
+				? `rgba(59, 130, 246, ${alpha * 0.6})` // Blue with reduced opacity for light mode
+				: `rgba(255, 255, 255, ${alpha})`; // White for dark mode
+			
+			context.current.fillStyle = particleColor;
 			context.current.fill();
 			context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 

@@ -95,6 +95,37 @@
     border-color: var(--border-color) !important;
   }
 
+  /* Homepage specific overrides */
+  .light .bg-gradient-to-tl.from-black.via-zinc-600\/20.to-black {
+    background: linear-gradient(to top left, #ffffff, #fafafa, #ffffff) !important;
+  }
+
+  .light .text-zinc-600 {
+    color: var(--text-muted) !important;
+  }
+
+  .light .text-zinc-800 {
+    color: var(--text-secondary) !important;
+  }
+
+  .light .text-zinc-900 {
+    color: var(--text-primary) !important;
+  }
+
+  /* Navigation text color in light mode */
+  .light nav .text-white {
+    color: var(--text-primary) !important;
+  }
+
+  /* Hover states for light mode */
+  .light .hover\:text-blue-400:hover {
+    color: #2563eb !important;
+  }
+
+  .light .hover\:text-blue-600:hover {
+    color: #1d4ed8 !important;
+  }
+
   /* Gradient overrides for light mode */
   .light .from-zinc-900\/0 {
     --tw-gradient-from: rgba(250, 250, 250, 0) !important;

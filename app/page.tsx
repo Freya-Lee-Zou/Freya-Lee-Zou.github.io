@@ -13,14 +13,17 @@ const navigation = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black dark:bg-gradient-to-tl dark:from-black dark:via-zinc-600/20 dark:to-black light:bg-gradient-to-tl light:from-white light:via-gray-100 light:to-white">
+    <div className="min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black dark:bg-gradient-to-tl dark:from-black dark:via-zinc-600/20 dark:to-black light:bg-gradient-to-tl light:from-white light:via-gray-50 light:to-white relative">
+      {/* Professional light mode background pattern */}
+      <div className="absolute inset-0 light:bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.03),transparent_50%)] dark:hidden"></div>
+      
       {/* Theme toggle in top right */}
       <div className="fixed top-6 right-6 z-50">
         <ThemeToggle />
       </div>
       
       {/* Navigation Bar */}
-      <nav className="nav fixed top-0 left-0 right-0 z-40 bg-black/40 dark:bg-black/40 light:bg-white/80 backdrop-blur-md border-b border-zinc-800/50 dark:border-zinc-800/50 light:border-zinc-200/50 shadow-lg">
+      <nav className="nav fixed top-0 left-0 right-0 z-40 bg-black/40 dark:bg-black/40 light:bg-white/90 backdrop-blur-md border-b border-zinc-800/50 dark:border-zinc-800/50 light:border-zinc-200/50 shadow-lg">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Custom Logo with 3D effect */}
@@ -46,7 +49,7 @@ export default function Home() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="relative text-white hover:text-blue-400 transition-all duration-300 font-medium group"
+                  className="relative text-white dark:text-white light:text-zinc-800 hover:text-blue-400 dark:hover:text-blue-400 light:hover:text-blue-600 transition-all duration-300 font-medium group"
                 >
                   {item.name}
                   {/* 3D underline effect */}
@@ -68,7 +71,7 @@ export default function Home() {
           <div className="space-y-8 order-2 lg:order-1">
             {/* Name and Title */}
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold text-white dark:text-white light:text-zinc-900 leading-tight">
                 <span className="inline-block">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 typing-animation-text">
                     <TypingAnimation 
@@ -79,17 +82,17 @@ export default function Home() {
                   </span>
                 </span>
               </h1>
-              <h2 className="text-xl md:text-2xl text-zinc-300 font-medium">
+              <h2 className="text-xl md:text-2xl text-zinc-300 dark:text-zinc-300 light:text-zinc-600 font-medium">
                 Software Engineer & AI/ML Developer
               </h2>
             </div>
             
             {/* Tagline */}
             <div className="space-y-4">
-              <h3 className="text-3xl md:text-4xl font-bold text-white">
+              <h3 className="text-3xl md:text-4xl font-bold text-white dark:text-white light:text-zinc-800">
                 I love to Create
               </h3>
-              <p className="text-lg text-zinc-400 leading-relaxed max-w-lg">
+              <p className="text-lg text-zinc-400 dark:text-zinc-400 light:text-zinc-600 leading-relaxed max-w-lg">
                 Building intelligent systems and innovative solutions through machine learning, 
                 computer vision, and robotics. Passionate about pushing the boundaries of AI 
                 and creating technology that makes a difference.
@@ -104,16 +107,16 @@ export default function Home() {
                 
                 {/* Floating particles around the button */}
                 <div className="absolute -inset-8 pointer-events-none">
-                  <div className="absolute top-0 left-0 w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
-                  <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-cyan-500 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
-                  <div className="absolute bottom-0 left-0 w-1 h-1 bg-teal-400 rounded-full animate-bounce" style={{ animationDelay: '0.6s' }}></div>
-                  <div className="absolute bottom-0 right-0 w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.9s' }}></div>
+                  <div className="absolute top-0 left-0 w-2 h-2 bg-blue-400 dark:bg-blue-400 light:bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+                  <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-cyan-500 dark:bg-cyan-500 light:bg-cyan-600 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+                  <div className="absolute bottom-0 left-0 w-1 h-1 bg-teal-400 dark:bg-teal-400 light:bg-teal-500 rounded-full animate-bounce" style={{ animationDelay: '0.6s' }}></div>
+                  <div className="absolute bottom-0 right-0 w-1.5 h-1.5 bg-blue-400 dark:bg-blue-400 light:bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.9s' }}></div>
                 </div>
                 
                 {/* Main button with 3D effects */}
                 <Link
                   href="/contact"
-                  className="relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 border border-transparent rounded-2xl text-white font-bold text-xl tracking-wider transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-blue-500/25 transform hover:rotate-1 z-20"
+                  className="relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 dark:from-blue-600 dark:via-cyan-500 dark:to-teal-400 light:from-blue-500 light:via-cyan-400 light:to-teal-400 border border-transparent rounded-2xl text-white font-bold text-xl tracking-wider transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-blue-500/25 light:group-hover:shadow-blue-400/25 transform hover:rotate-1 z-20"
                 >
                   {/* Shimmer effect overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
@@ -151,15 +154,15 @@ export default function Home() {
               {/* 3D Sphere Profile Image Container */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 group">
                 {/* 3D Sphere Effect - Multiple layers for depth */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-500/30 to-teal-400/30 blur-sm scale-110 group-hover:scale-125 transition-transform duration-700"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-500/30 to-teal-400/30 dark:from-blue-400/30 dark:via-cyan-500/30 dark:to-teal-400/30 light:from-blue-400/20 light:via-cyan-500/20 light:to-teal-400/20 blur-sm scale-110 group-hover:scale-125 transition-transform duration-700"></div>
                 
                 {/* Main gradient border with 3D effect */}
-                <div className="relative w-full h-full rounded-full bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 p-1.5 shadow-2xl transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                <div className="relative w-full h-full rounded-full bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 dark:from-blue-400 dark:via-cyan-500 dark:to-teal-400 light:from-blue-500 light:via-cyan-400 light:to-teal-400 p-1.5 shadow-2xl transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
                   {/* Inner shadow for 3D depth */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-transparent to-black/40 pointer-events-none"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-transparent to-black/40 dark:from-white/20 dark:via-transparent dark:to-black/40 light:from-white/40 light:via-transparent light:to-zinc-300/40 pointer-events-none"></div>
                   
                   {/* Profile image container */}
-                  <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-900/90 backdrop-blur-sm">
+                  <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-900/90 dark:bg-zinc-900/90 light:bg-zinc-100/90 backdrop-blur-sm">
                     <Image
                       src="/Freya.JPG"
                       alt="Freya Zou Profile Photo"
@@ -182,10 +185,10 @@ export default function Home() {
                 
                 {/* Subtle floating particles effect */}
                 <div className="absolute inset-0 rounded-full pointer-events-none">
-                  <div className="absolute top-4 left-4 w-2 h-2 bg-blue-400/40 rounded-full animate-pulse" style={{ animationDelay: '0s' }}></div>
-                  <div className="absolute top-8 right-6 w-1.5 h-1.5 bg-cyan-500/50 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="absolute bottom-6 left-8 w-1 h-1 bg-teal-400/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                  <div className="absolute bottom-8 right-4 w-1.5 h-1.5 bg-blue-400/30 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+                  <div className="absolute top-4 left-4 w-2 h-2 bg-blue-400/40 dark:bg-blue-400/40 light:bg-blue-500/30 rounded-full animate-pulse" style={{ animationDelay: '0s' }}></div>
+                  <div className="absolute top-8 right-6 w-1.5 h-1.5 bg-cyan-500/50 dark:bg-cyan-500/50 light:bg-cyan-600/40 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="absolute bottom-6 left-8 w-1 h-1 bg-teal-400/60 dark:bg-teal-400/60 light:bg-teal-500/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                  <div className="absolute bottom-8 right-4 w-1.5 h-1.5 bg-blue-400/30 dark:bg-blue-400/30 light:bg-blue-500/25 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
                 </div>
               </div>
             </div>
