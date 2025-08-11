@@ -20,7 +20,7 @@ export default function Home() {
       </div>
       
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-black/40 backdrop-blur-md border-b border-zinc-800/50 shadow-lg">
+      <nav className="fixed top-0 left-0 right-0 z-40 bg-black/40 dark:bg-black/40 light:bg-white/80 backdrop-blur-md border-b border-zinc-800/50 dark:border-zinc-800/50 light:border-zinc-200/50 shadow-lg">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Custom Logo with 3D effect */}

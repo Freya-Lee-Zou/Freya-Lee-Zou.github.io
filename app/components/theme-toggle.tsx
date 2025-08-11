@@ -28,6 +28,15 @@ export const ThemeToggle: React.FC = () => {
 			document.documentElement.classList.remove("dark");
 			localStorage.setItem("theme", "light");
 		}
+		
+		// Also apply theme to body for immediate effect
+		if (isDark) {
+			document.body.classList.add("dark");
+			document.body.classList.remove("light");
+		} else {
+			document.body.classList.add("light");
+			document.body.classList.remove("dark");
+		}
 	}, [isDark]);
 
 	const toggleTheme = () => {
