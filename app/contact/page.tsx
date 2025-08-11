@@ -95,9 +95,6 @@ export default function Example() {
 						<h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 sm:text-4xl font-display">
 							Resume
 						</h2>
-						<p className="mt-4 text-lg text-zinc-400 max-w-2xl mx-auto">
-							Download my detailed resume below.
-						</p>
 					</div>
 
 					{/* Download Resume Button */}
