@@ -49,7 +49,7 @@ export default function Home() {
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative">
               {/* 3D Sphere Profile Image Container */}
-              <div id="profile-sphere" className="relative w-96 h-96 lg:w-[28rem] lg:h-[28rem] group">
+              <div id="profile-sphere" className="relative w-[26rem] h-[26rem] lg:w-[34rem] lg:h-[34rem] group">
                 {/* 3D Sphere Effect - Multiple layers for depth */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/15 via-cyan-500/15 to-teal-400/15 blur-sm"></div>
                 
@@ -63,10 +63,11 @@ export default function Home() {
                     <Image
                       src="/Freya.JPG"
                       alt="Freya Zou Profile Photo"
-                      width={600}
-                      height={600}
-                      className="w-full h-full object-cover rounded-full transform scale-105 group-hover:scale-110 transition-transform duration-500"
+                      width={800}
+                      height={800}
+                      className="w-full h-full object-cover rounded-full transform scale-100 group-hover:scale-105 transition-transform duration-500"
                       style={{
+                        objectPosition: '20% 50%',
                         WebkitMaskImage:
                           'radial-gradient(circle at 42% 50%, black 78%, transparent 98%)',
                         maskImage:
@@ -96,7 +97,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Right-side external vignette to blend sphere into page bg */}
-              <div className="pointer-events-none absolute right-[-90px] top-1/2 -translate-y-1/2 w-96 h-96 -z-10">
+              <div className="pointer-events-none absolute right-[-120px] top-1/2 -translate-y-1/2 w-[30rem] h-[30rem] -z-10">
                 <div className="w-full h-full rounded-full dark:bg-[radial-gradient(60%_60%_at_0%_50%,rgba(0,0,0,0.6)_0%,transparent_70%)] light:bg-[radial-gradient(60%_60%_at_0%_50%,rgba(0,0,0,0.08)_0%,transparent_70%)]"></div>
               </div>
             </div>
