@@ -19,7 +19,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           
           {/* Left Column - Text Content */}
-          <div className="space-y-8 order-2 lg:order-1">
+            <div className="space-y-6 order-2 lg:order-1">
             {/* Name and Title */}
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-bold text-white dark:text-white light:text-zinc-900 leading-tight">
@@ -43,10 +43,8 @@ export default function Home() {
               <h3 className="text-3xl md:text-4xl font-bold text-white dark:text-white light:text-zinc-800">
                 I love to Create
               </h3>
-              <p className="text-lg text-zinc-400 dark:text-zinc-400 light:text-zinc-600 leading-relaxed max-w-lg">
-                Building intelligent systems and innovative solutions through machine learning, 
-                computer vision, and robotics. Passionate about pushing the boundaries of AI 
-                and creating technology that makes a difference.
+              <p className="text-base text-zinc-400 dark:text-zinc-400 light:text-zinc-600 leading-relaxed max-w-md">
+                Building intelligent systems with AI/ML — practical, reliable, and focused on real impact.
               </p>
             </div>
             
