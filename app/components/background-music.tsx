@@ -161,6 +161,15 @@ export default function BackgroundMusic() {
           {!audioLoaded && !audioError && (
             <p className="text-xs text-blue-400 mt-1">Loading audio...</p>
           )}
+          {/* Helpful info for users */}
+          <p className="text-xs text-zinc-500 dark:text-zinc-500 light:text-zinc-500 mt-1">
+            File: 8.8MB MP3
+          </p>
+          {audioError && (
+            <p className="text-xs text-yellow-400 mt-1 max-w-[120px]">
+              Try refreshing the page or check your internet connection
+            </p>
+          )}
         </div>
       </div>
 
