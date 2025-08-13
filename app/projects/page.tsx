@@ -1,13 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import { allProjects } from "contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
-import { Eye } from "lucide-react";
+import { Eye, Play, Github } from "lucide-react";
 
-export const revalidate = 60;
-export default async function ProjectsPage() {
+export default function ProjectsPage() {
   // Mock views data until Redis is properly configured
   const views = allProjects.reduce((acc, project) => {
     acc[project.slug] = Math.floor(Math.random() * 1000); // Random demo views
@@ -42,12 +43,12 @@ export default async function ProjectsPage() {
     project.slug.includes('qstash')
   );
 
-  // Sort projects by date within each category
+  // Sort projects by date within each category and limit to 3
   const sortByDate = (projects: typeof publishedProjects) => 
     projects.sort((a, b) => 
       new Date(b.date ?? Number.POSITIVE_INFINITY).getTime() - 
       new Date(a.date ?? Number.POSITIVE_INFINITY).getTime()
-    );
+    ).slice(0, 3);
 
   const sortedAiML = sortByDate(aiMLProjects);
   const sortedMobileWeb = sortByDate(mobileWebProjects);
@@ -77,6 +78,38 @@ export default async function ProjectsPage() {
               {sortedAiML.map((project) => (
                 <Card key={project.slug}>
                   <Article project={project} views={views[project.slug] ?? 0} />
+                  
+                  {/* GitHub Link Section */}
+                  <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
+                        <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
+                      </div>
+                      <a 
+                        href={`https://github.com/freyazou/${project.slug}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
+                      >
+                        View Code
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* YouTube Video Section */}
+                  <div className="mt-3 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <Play className="w-4 h-4 text-red-500" />
+                      <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Project Demo</span>
+                    </div>
+                    <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
+                      <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
+                        <Play className="w-8 h-8 mx-auto mb-2" />
+                        <p className="text-xs">Video coming soon</p>
+                      </div>
+                    </div>
+                  </div>
                 </Card>
               ))}
             </div>
@@ -93,6 +126,38 @@ export default async function ProjectsPage() {
               {sortedMobileWeb.map((project) => (
                 <Card key={project.slug}>
                   <Article project={project} views={views[project.slug] ?? 0} />
+                  
+                  {/* GitHub Link Section */}
+                  <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
+                        <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
+                      </div>
+                      <a 
+                        href={`https://github.com/freyazou/${project.slug}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
+                      >
+                        View Code
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* YouTube Video Section */}
+                  <div className="mt-3 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <Play className="w-4 h-4 text-red-500" />
+                      <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Project Demo</span>
+                    </div>
+                    <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
+                      <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
+                        <Play className="w-8 h-8 mx-auto mb-2" />
+                        <p className="text-xs">Video coming soon</p>
+                      </div>
+                    </div>
+                  </div>
                 </Card>
               ))}
             </div>
@@ -109,6 +174,38 @@ export default async function ProjectsPage() {
               {sortedCloudInfra.map((project) => (
                 <Card key={project.slug}>
                   <Article project={project} views={views[project.slug] ?? 0} />
+                  
+                  {/* GitHub Link Section */}
+                  <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
+                        <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
+                      </div>
+                      <a 
+                        href={`https://github.com/freyazou/${project.slug}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
+                      >
+                        View Code
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* YouTube Video Section */}
+                  <div className="mt-3 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <Play className="w-4 h-4 text-red-500" />
+                      <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Project Demo</span>
+                    </div>
+                    <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
+                      <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
+                        <Play className="w-8 h-8 mx-auto mb-2" />
+                        <p className="text-xs">Video coming soon</p>
+                      </div>
+                    </div>
+                  </div>
                 </Card>
               ))}
             </div>
