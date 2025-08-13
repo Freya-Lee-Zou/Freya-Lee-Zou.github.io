@@ -23,7 +23,7 @@ export const Navigation: React.FC = () => {
 				<div className="container flex items-center p-6 mx-auto">
 					{/* Logo on the left */}
 					<Link href="/" aria-label="Go to home" className="duration-200 flex items-center hover:opacity-90">
-						<div className="mr-2 relative w-10 h-10">
+						<div className="mr-3 relative w-10 h-10">
 							{/* Spinning gradient ring */}
 							<div className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 animate-[spin_14s_linear_infinite] shadow-md">
 								{/* Inner sphere */}
@@ -34,8 +34,8 @@ export const Navigation: React.FC = () => {
 						</div>
 					</Link>
 
-					{/* Navigation links moved to the right side */}
-					<div className="flex gap-8 ml-auto mr-8">
+					{/* Navigation links placed next to logo on the left */}
+					<div className="flex gap-8">
 						<Link
 							href="/education"
 							className="text-lg font-semibold duration-200 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:scale-105 transition-transform"
@@ -56,8 +56,8 @@ export const Navigation: React.FC = () => {
 						</Link>
 					</div>
 
-					{/* Theme toggle at the absolute far right */}
-					<div className="flex items-center">
+					{/* Theme toggle on the far right */}
+					<div className="flex items-center ml-auto">
 						<ThemeToggle />
 					</div>
 				</div>

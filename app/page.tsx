@@ -2,14 +2,15 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import Particles from "./components/particles";
+import VignetteBackground from "./components/vignette-bg";
 import { Navigation } from "./components/nav";
 import { TypingAnimation } from "./components/typing-animation";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black dark:bg-gradient-to-tl dark:from-black dark:via-zinc-600/20 dark:to-black light:bg-gradient-to-tl light:from-white light:via-gray-50 light:to-white relative">
-      {/* Professional light mode background pattern */}
-      <div className="absolute inset-0 light:bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.03),transparent_50%)] dark:hidden"></div>
+      {/* Cinematic vignette background */}
+      <VignetteBackground className="absolute inset-0 -z-20" />
       
       <Navigation />
 
@@ -52,49 +53,25 @@ export default function Home() {
             {/* Call to Action Button */}
             <div className="pt-6">
               <div className="relative inline-block group">
-                {/* Animated gradient border with pulsing effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse pointer-events-none"></div>
-                
-                {/* Floating particles around the button */}
-                <div className="absolute -inset-8 pointer-events-none">
-                  <div className="absolute top-0 left-0 w-2 h-2 bg-blue-400 dark:bg-blue-400 light:bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
-                  <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-cyan-500 dark:bg-cyan-500 light:bg-cyan-600 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
-                  <div className="absolute bottom-0 left-0 w-1 h-1 bg-teal-400 dark:bg-teal-400 light:bg-teal-500 rounded-full animate-bounce" style={{ animationDelay: '0.6s' }}></div>
-                  <div className="absolute bottom-0 right-0 w-1.5 h-1.5 bg-blue-400 dark:bg-blue-400 light:bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.9s' }}></div>
-                </div>
-                
-                {/* Main button with 3D effects */}
+                {/* Subtle gradient outline */}
+                <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none"></div>
+
+                {/* Clean primary button */}
                 <Link
                   href="/contact"
-                  className="relative inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 dark:from-blue-600 dark:via-cyan-500 dark:to-teal-400 light:from-blue-500 light:via-cyan-400 light:to-teal-400 border border-transparent rounded-2xl text-white font-bold text-xl tracking-wider transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-blue-500/25 light:group-hover:shadow-blue-400/25 transform hover:rotate-1 z-20"
+                  className="relative inline-flex items-center justify-center px-9 py-4 rounded-2xl text-white font-semibold text-lg bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 shadow-lg hover:shadow-xl transition-transform duration-300 hover:-translate-y-0.5"
                 >
-                  {/* Shimmer effect overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
-                  
-                  {/* Button text with glow effect */}
-                  <span className="relative z-30 text-white drop-shadow-lg group-hover:drop-shadow-2xl group-hover:drop-shadow-blue-400/50">
-                    CONTACT ME
-                  </span>
-                  
-                  {/* Animated arrow icon */}
-                  <svg 
-                    className="w-6 h-6 ml-3 transform transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110 group-hover:text-yellow-300 relative z-30" 
-                    fill="none" 
-                    stroke="currentColor" 
+                  <span className="relative">CONTACT ME</span>
+                  <svg
+                    className="w-5 h-5 ml-3"
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                  
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-teal-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm pointer-events-none"></div>
                 </Link>
-                
-                {/* Magnetic attraction effect - subtle glow on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-cyan-400/10 to-teal-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl scale-150 group-hover:scale-100 pointer-events-none"></div>
               </div>
-              
-
             </div>
           </div>
           
@@ -104,34 +81,34 @@ export default function Home() {
               {/* 3D Sphere Profile Image Container */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 group">
                 {/* 3D Sphere Effect - Multiple layers for depth */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-500/30 to-teal-400/30 dark:from-blue-400/30 dark:via-cyan-500/30 dark:to-teal-400/30 light:from-blue-400/20 light:via-cyan-500/20 light:to-teal-400/20 blur-sm scale-110 group-hover:scale-125 transition-transform duration-700"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/15 via-cyan-500/15 to-teal-400/15 blur-sm"></div>
                 
                 {/* Main gradient border with 3D effect */}
-                <div className="relative w-full h-full rounded-full bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 dark:from-blue-400 dark:via-cyan-500 dark:to-teal-400 light:from-blue-500 light:via-cyan-400 light:to-teal-400 p-1.5 shadow-2xl transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                <div className="relative w-full h-full rounded-full bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 p-[1px] shadow-lg">
                   {/* Inner shadow for 3D depth */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 via-transparent to-black/40 dark:from-white/20 dark:via-transparent dark:to-black/40 light:from-white/40 light:via-transparent light:to-zinc-300/40 pointer-events-none"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 via-transparent to-black/30 pointer-events-none"></div>
                   
                   {/* Profile image container */}
-                  <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-900/90 dark:bg-zinc-900/90 light:bg-zinc-100/90 backdrop-blur-sm">
+                  <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-900/60 backdrop-blur">
                     <Image
                       src="/Freya.JPG"
                       alt="Freya Zou Profile Photo"
                       width={400}
                       height={400}
                       className="w-full h-full object-cover rounded-full transform scale-105 group-hover:scale-110 transition-transform duration-500"
+                      style={{ WebkitMaskImage: 'radial-gradient(closest-side, black 88%, transparent 100%)', maskImage: 'radial-gradient(closest-side, black 88%, transparent 100%)' }}
                       priority
                       loading="eager"
                       fetchPriority="high"
                     />
                     
                     {/* Overlay for professional consistency */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/5 via-transparent to-teal-400/5 pointer-events-none"></div>
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/5 via-transparent to-teal-400/5 mix-blend-soft-light pointer-events-none"></div>
                   </div>
                 </div>
                 
                 {/* Professional 3D shadows and highlights */}
-                <div className="absolute -inset-6 rounded-full bg-gradient-to-r from-blue-400/15 via-cyan-500/15 to-teal-400/15 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500 -z-10"></div>
-                <div className="absolute -inset-8 rounded-full bg-gradient-to-r from-blue-400/8 via-cyan-500/8 to-teal-400/8 blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-700 -z-20"></div>
+                <div className="absolute -inset-6 rounded-full bg-gradient-to-r from-blue-400/12 via-cyan-500/12 to-teal-400/12 blur-2xl opacity-35 -z-10"></div>
                 
                 {/* Subtle floating particles effect */}
                 <div className="absolute inset-0 rounded-full pointer-events-none">

@@ -43,33 +43,38 @@ export const ThemeToggle: React.FC = () => {
 		setIsDark(!isDark);
 	};
 
-	return (
-		<button
-			onClick={toggleTheme}
-			className="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-zinc-800/50 hover:bg-zinc-700/50 dark:bg-zinc-200/10 dark:hover:bg-zinc-200/20 transition-all duration-200 group"
-			aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
-		>
-			<div className="relative w-5 h-5">
-				{/* Sun icon */}
-				<Sun
-					className={`absolute inset-0 w-5 h-5 text-yellow-500 transition-all duration-300 ${
-						isDark
-							? "scale-0 rotate-90 opacity-0"
-							: "scale-100 rotate-0 opacity-100"
-					}`}
-				/>
-				{/* Moon icon */}
-				<Moon
-					className={`absolute inset-0 w-5 h-5 text-blue-400 transition-all duration-300 ${
-						isDark
-							? "scale-100 rotate-0 opacity-100"
-							: "scale-0 -rotate-90 opacity-0"
-					}`}
-				/>
-			</div>
-			
-			{/* Hover glow effect */}
-			<div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 via-cyan-500/20 to-teal-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
-		</button>
-	);
+  return (
+    <button
+      onClick={toggleTheme}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      className={`relative inline-flex items-center h-10 w-44 rounded-full p-1 transition-colors duration-300 ${
+        isDark
+          ? "bg-zinc-900/90 border border-zinc-700/60 shadow-inner"
+          : "bg-white/90 border border-zinc-200 shadow-sm"
+      }`}
+    >
+      {/* Label that matches the current mode */}
+      <span
+        className={`flex-1 text-left text-sm font-semibold select-none ${
+          isDark ? "text-white/90 pl-4 pr-12" : "text-zinc-800 pl-12 pr-4"
+        }`}
+      >
+        {isDark ? "Dark mode" : "Light mode"}
+      </span>
+      {/* Knob slides left/right and uses brand gradient */}
+      <span
+        className={`absolute top-1 bottom-1 transition-all duration-300 ease-out ${
+          isDark ? "right-1" : "left-1"
+        }`}
+      >
+        <span className="relative inline-flex items-center justify-center w-8 h-8 rounded-full shadow-md bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-400">
+          {isDark ? (
+            <Moon className="w-4 h-4 text-white/95" />
+          ) : (
+            <Sun className="w-4 h-4 text-white/95" />
+          )}
+        </span>
+      </span>
+    </button>
+  );
 };
