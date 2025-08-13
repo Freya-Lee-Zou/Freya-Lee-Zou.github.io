@@ -133,7 +133,7 @@ export default function ContactRobotButton() {
       </svg>
       {/* Hover pop-out conversation bubble */}
       <div className={`robot-bubble absolute -top-14 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full text-sm font-semibold shadow-xl opacity-0 scale-90 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 ${feeding ? 'opacity-100 scale-100' : ''} bg-zinc-900/95 text-white dark:bg-zinc-900/95 dark:text-white light:bg-white/95 light:text-zinc-900 border border-cyan-400/60 dark:border-cyan-400/60 light:border-zinc-300`}>
-        {isHappy ? reaction : "I'm FZNova — click me to contact my owner"}
+        {isHappy ? reaction : "Click food to feed me or contact my owner"}
       </div>
       {/* Treat menu toggle */}
       <div className="absolute -right-3 -top-3">
@@ -164,7 +164,7 @@ export default function ContactRobotButton() {
         left: 0;
         bottom: 3vh;
         z-index: 40;
-        animation: patrol 36s ease-in-out infinite;
+        animation: patrol 60s ease-in-out infinite;
         pointer-events: auto;
       }
       /* Theme-specific bubble overrides to ensure readability */
