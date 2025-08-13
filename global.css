@@ -172,6 +172,11 @@
     color: var(--text-muted) !important;
   }
 
+  /* Hide interactive spotlight gradients on cards in light mode to avoid dark spots */
+  .light .card .spotlight {
+    display: none !important;
+  }
+
   /* Logo text in light mode */
   .light .text-zinc-700 {
     color: var(--text-secondary) !important;

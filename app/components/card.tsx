@@ -28,11 +28,11 @@ export const Card: React.FC<PropsWithChildren> = ({ children }) => {
 			<div className="pointer-events-none">
 				<div className="absolute inset-0 z-0 transition duration-1000 [mask-image:linear-gradient(black,transparent)]" />
 				<motion.div
-					className="absolute inset-0 z-10 bg-gradient-to-br opacity-100 via-zinc-100/10 dark:via-zinc-100/10 light:via-blue-50/20 transition duration-1000 group-hover:opacity-50"
+					className="spotlight absolute inset-0 z-10 bg-gradient-to-br opacity-100 via-zinc-100/10 dark:via-zinc-100/10 light:via-blue-50/20 transition duration-1000 group-hover:opacity-50"
 					style={style}
 				/>
 				<motion.div
-					className="absolute inset-0 z-10 opacity-0 mix-blend-overlay transition duration-1000 group-hover:opacity-100"
+					className="spotlight absolute inset-0 z-10 opacity-0 mix-blend-overlay transition duration-1000 group-hover:opacity-100"
 					style={style}
 				/>
 			</div>
