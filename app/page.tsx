@@ -79,7 +79,7 @@ export default function Home() {
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative">
               {/* 3D Sphere Profile Image Container */}
-              <div className="relative w-80 h-80 lg:w-96 lg:h-96 group">
+              <div className="relative w-96 h-96 lg:w-[28rem] lg:h-[28rem] group">
                 {/* 3D Sphere Effect - Multiple layers for depth */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/15 via-cyan-500/15 to-teal-400/15 blur-sm"></div>
                 
@@ -93,10 +93,15 @@ export default function Home() {
                     <Image
                       src="/Freya.JPG"
                       alt="Freya Zou Profile Photo"
-                      width={400}
-                      height={400}
+                      width={600}
+                      height={600}
                       className="w-full h-full object-cover rounded-full transform scale-105 group-hover:scale-110 transition-transform duration-500"
-                      style={{ WebkitMaskImage: 'radial-gradient(closest-side, black 88%, transparent 100%)', maskImage: 'radial-gradient(closest-side, black 88%, transparent 100%)' }}
+                      style={{
+                        WebkitMaskImage:
+                          'radial-gradient(circle at 42% 50%, black 78%, transparent 98%)',
+                        maskImage:
+                          'radial-gradient(circle at 42% 50%, black 78%, transparent 98%)',
+                      }}
                       priority
                       loading="eager"
                       fetchPriority="high"
@@ -104,6 +109,8 @@ export default function Home() {
                     
                     {/* Overlay for professional consistency */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/5 via-transparent to-teal-400/5 mix-blend-soft-light pointer-events-none"></div>
+                    {/* Right-side blend tint for better integration with background */}
+                    <div className="absolute inset-0 rounded-full pointer-events-none bg-gradient-to-r from-transparent via-transparent to-black/55 dark:to-black/65 light:to-white/70"></div>
                   </div>
                 </div>
                 
@@ -117,6 +124,10 @@ export default function Home() {
                   <div className="absolute bottom-6 left-8 w-1 h-1 bg-teal-400/60 dark:bg-teal-400/60 light:bg-teal-500/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                   <div className="absolute bottom-8 right-4 w-1.5 h-1.5 bg-blue-400/30 dark:bg-blue-400/30 light:bg-blue-500/25 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
                 </div>
+              </div>
+              {/* Right-side external vignette to blend sphere into page bg */}
+              <div className="pointer-events-none absolute right-[-90px] top-1/2 -translate-y-1/2 w-96 h-96 -z-10">
+                <div className="w-full h-full rounded-full dark:bg-[radial-gradient(60%_60%_at_0%_50%,rgba(0,0,0,0.6)_0%,transparent_70%)] light:bg-[radial-gradient(60%_60%_at_0%_50%,rgba(0,0,0,0.08)_0%,transparent_70%)]"></div>
               </div>
             </div>
           </div>
