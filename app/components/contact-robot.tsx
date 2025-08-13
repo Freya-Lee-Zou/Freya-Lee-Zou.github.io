@@ -5,7 +5,8 @@ import React from "react";
 
 export default function ContactRobotButton() {
   return (
-    <Link href="/contact" aria-label="Contact me" className="inline-block select-none">
+    <div className="robot-patrol inline-block select-none">
+      <Link href="/contact" aria-label="Contact me" className="inline-block select-none">
       <svg
         width="300"
         height="150"
@@ -39,7 +40,7 @@ export default function ContactRobotButton() {
 
         {/* Rolling robot group (translate left-right) */}
         <g>
-          <animateTransform attributeName="transform" type="translate" dur="4s" values="0 0; 12 0; 0 0; -12 0; 0 0" repeatCount="indefinite" />
+          <animateTransform attributeName="transform" type="translate" dur="12s" values="0 0; 12 0; 0 0; -12 0; 0 0" repeatCount="indefinite" />
 
           {/* Lower sphere (rolling body) */}
           <g filter="url(#drop)">
@@ -48,11 +49,14 @@ export default function ContactRobotButton() {
           <g clipPath="url(#lowerSphereClip)">
             <g transform="translate(185 95)">
               <circle r="40" fill="none" stroke="url(#brandGrad)" strokeOpacity="0.25" strokeWidth="10">
-                <animateTransform attributeName="transform" type="rotate" dur="3s" from="0" to="360" repeatCount="indefinite" />
+                <animateTransform attributeName="transform" type="rotate" dur="12s" from="0" to="360" repeatCount="indefinite" />
               </circle>
             </g>
-            {/* Text on the lower sphere - bigger and outlined for contrast */}
+            {/* Centered label inside the lower sphere for maximum readability */}
             <text
+              x="185"
+              y="100"
+              textAnchor="middle"
               fill="#ffffff"
               stroke="#000000"
               strokeWidth="2"
@@ -61,7 +65,7 @@ export default function ContactRobotButton() {
               filter="url(#textGlow)"
               style={{ paintOrder: "stroke fill" }}
             >
-              <textPath href="#contactArc" startOffset="50%" textAnchor="middle">Contact →</textPath>
+              Contact
             </text>
           </g>
           </g>
@@ -86,6 +90,26 @@ export default function ContactRobotButton() {
         </g>
       </svg>
     </Link>
+    <style jsx>{`
+      @keyframes patrol {
+        0% { transform: translateX(0); }
+        45% { transform: translateX(var(--stop-x, 60vw)); }
+        55% { transform: translateX(var(--stop-x, 60vw)); }
+        100% { transform: translateX(0); }
+      }
+      .robot-patrol {
+        position: fixed;
+        left: 0;
+        bottom: 3vh;
+        z-index: 40;
+        animation: patrol 36s ease-in-out infinite;
+        pointer-events: auto;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .robot-patrol { animation: none; }
+      }
+    `}</style>
+    </div>
   );
 }
 

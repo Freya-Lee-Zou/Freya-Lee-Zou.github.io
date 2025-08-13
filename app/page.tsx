@@ -16,7 +16,7 @@ export default function Home() {
       <Navigation />
 
       {/* Main Content - Two Column Layout */}
-      <div className="container mx-auto px-6 pt-24 pb-16">
+      <div className="container mx-auto px-6 pt-24 pb-16" id="hero-root">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           
           {/* Left Column - Text Content */}
@@ -27,7 +27,7 @@ export default function Home() {
                 <span className="inline-block">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 typing-animation-text">
                     <TypingAnimation 
-                      texts={["I'm Freya Zou, Software Engineer, AI/ML Developer"]}
+                      texts={["I'm Freya Zou, Software Engineer, AI/ML Developer."]}
                       speed={80}
                       delay={3000}
                     />
@@ -49,7 +49,7 @@ export default function Home() {
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <div className="relative">
               {/* 3D Sphere Profile Image Container */}
-              <div className="relative w-96 h-96 lg:w-[28rem] lg:h-[28rem] group">
+              <div id="profile-sphere" className="relative w-96 h-96 lg:w-[28rem] lg:h-[28rem] group">
                 {/* 3D Sphere Effect - Multiple layers for depth */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/15 via-cyan-500/15 to-teal-400/15 blur-sm"></div>
                 
@@ -109,6 +109,32 @@ export default function Home() {
         className="absolute inset-0 -z-10"
         quantity={100}
       />
+      <script dangerouslySetInnerHTML={{__html: `
+        (function(){
+          function updateStop(){
+            try{
+              var sphere = document.getElementById('profile-sphere');
+              var root = document.getElementById('hero-root');
+              var patrol = document.querySelector('.robot-patrol');
+              if(!sphere || !root || !patrol) return;
+              var sphereRect = sphere.getBoundingClientRect();
+              var rootRect = root.getBoundingClientRect();
+              var patrolRect = patrol.getBoundingClientRect();
+              var margin = 24; // space to keep before picture
+              var stopX = (sphereRect.left - rootRect.left) - patrolRect.width - margin; // stop before picture
+              var maxX = rootRect.width - patrolRect.width - margin;
+              if (stopX < 120) stopX = 120; // ensure some travel
+              if (stopX > maxX) stopX = maxX;
+              patrol.style.setProperty('--stop-x', stopX + 'px');
+              // robot is pinned to bottom so only stop-x matters
+            }catch(e){}
+          }
+          window.addEventListener('load', updateStop);
+          window.addEventListener('resize', updateStop);
+          window.addEventListener('orientationchange', updateStop);
+          setTimeout(updateStop, 100);
+        })();
+      `}} />
     </div>
   );
 }
