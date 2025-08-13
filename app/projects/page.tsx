@@ -98,25 +98,6 @@ export default function ProjectsPage() {
                     >
                       <Article project={project} views={views[project.slug] ?? 0} />
                       
-                      {/* GitHub Link Section */}
-                      <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-2">
-                            <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
-                            <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
-                          </div>
-                          <a 
-                            href={`https://github.com/freyazou/${project.slug}`} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            View Code
-                          </a>
-                        </div>
-                      </div>
-
                       {/* Expand/Collapse Indicator */}
                       <div className="mt-3 flex justify-center">
                         <div className="flex items-center space-x-2 text-zinc-400 dark:text-zinc-400 light:text-zinc-500 text-sm">
@@ -146,6 +127,33 @@ export default function ProjectsPage() {
                               <p className="text-sm">Video coming soon</p>
                               <p className="text-xs mt-1">Click to expand and view demo</p>
                             </div>
+                          </div>
+                        </div>
+
+                        {/* Project Links Section */}
+                        <div className="mb-4 p-3 bg-zinc-800/30 dark:bg-zinc-800/30 light:bg-zinc-200/30 rounded-md">
+                          <h4 className="font-medium text-white dark:text-white light:text-zinc-800 mb-3">Project Links</h4>
+                          <div className="flex flex-wrap gap-3">
+                            <a 
+                              href={`https://github.com/freyazou/${project.slug}`} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 px-4 py-2 bg-zinc-700 dark:bg-zinc-700 light:bg-zinc-300 hover:bg-zinc-600 dark:hover:bg-zinc-600 light:hover:bg-zinc-400 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-sm font-medium transition-colors duration-200"
+                            >
+                              <Github className="w-4 h-4" />
+                              <span>GitHub</span>
+                            </a>
+                            {project.url && (
+                              <a 
+                                href={project.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center space-x-2 px-4 py-2 bg-zinc-700 dark:bg-zinc-700 light:bg-zinc-300 hover:bg-zinc-600 dark:hover:bg-zinc-600 light:hover:bg-zinc-400 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-sm font-medium transition-colors duration-200"
+                              >
+                                <span>🌐</span>
+                                <span>Website</span>
+                              </a>
+                            )}
                           </div>
                         </div>
 
@@ -205,25 +213,6 @@ export default function ProjectsPage() {
                     >
                       <Article project={project} views={views[project.slug] ?? 0} />
                       
-                      {/* GitHub Link Section */}
-                      <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-2">
-                            <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
-                            <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
-                          </div>
-                          <a 
-                            href={`https://github.com/freyazou/${project.slug}`} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            View Code
-                          </a>
-                        </div>
-                      </div>
-
                       {/* Expand/Collapse Indicator */}
                       <div className="mt-3 flex justify-center">
                         <div className="flex items-center space-x-2 text-zinc-400 dark:text-zinc-400 light:text-zinc-500 text-sm">
@@ -253,6 +242,33 @@ export default function ProjectsPage() {
                               <p className="text-sm">Video coming soon</p>
                               <p className="text-xs mt-1">Click to expand and view demo</p>
                             </div>
+                          </div>
+                        </div>
+
+                        {/* Project Links Section */}
+                        <div className="mb-4 p-3 bg-zinc-800/30 dark:bg-zinc-800/30 light:bg-zinc-200/30 rounded-md">
+                          <h4 className="font-medium text-white dark:text-white light:text-zinc-800 mb-3">Project Links</h4>
+                          <div className="flex flex-wrap gap-3">
+                            <a 
+                              href={`https://github.com/freyazou/${project.slug}`} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 px-4 py-2 bg-zinc-700 dark:bg-zinc-700 light:bg-zinc-300 hover:bg-zinc-600 dark:hover:bg-zinc-600 light:hover:bg-zinc-400 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-sm font-medium transition-colors duration-200"
+                            >
+                              <Github className="w-4 h-4" />
+                              <span>GitHub</span>
+                            </a>
+                            {project.url && (
+                              <a 
+                                href={project.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center space-x-2 px-4 py-2 bg-zinc-700 dark:bg-zinc-700 light:bg-zinc-300 hover:bg-zinc-600 dark:hover:bg-zinc-600 light:hover:bg-zinc-400 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-sm font-medium transition-colors duration-200"
+                              >
+                                <span>🌐</span>
+                                <span>Website</span>
+                              </a>
+                            )}
                           </div>
                         </div>
 
@@ -312,25 +328,6 @@ export default function ProjectsPage() {
                     >
                       <Article project={project} views={views[project.slug] ?? 0} />
                       
-                      {/* GitHub Link Section */}
-                      <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
-                        <div className="flex items-center space-x-2">
-                          <div className="flex items-center space-x-2">
-                            <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
-                            <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
-                          </div>
-                          <a 
-                            href={`https://github.com/freyazou/${project.slug}`} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            View Code
-                          </a>
-                        </div>
-                      </div>
-
                       {/* Expand/Collapse Indicator */}
                       <div className="mt-3 flex justify-center">
                         <div className="flex items-center space-x-2 text-zinc-400 dark:text-zinc-400 light:text-zinc-500 text-sm">
@@ -361,6 +358,33 @@ export default function ProjectsPage() {
                               <p className="text-xs mt-1">Click to expand and view demo</p>
                             </div>
                             </div>
+                        </div>
+
+                        {/* Project Links Section */}
+                        <div className="mb-4 p-3 bg-zinc-800/30 dark:bg-zinc-800/30 light:bg-zinc-200/30 rounded-md">
+                          <h4 className="font-medium text-white dark:text-white light:text-zinc-800 mb-3">Project Links</h4>
+                          <div className="flex flex-wrap gap-3">
+                            <a 
+                              href={`https://github.com/freyazou/${project.slug}`} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-2 px-4 py-2 bg-zinc-700 dark:bg-zinc-700 light:bg-zinc-300 hover:bg-zinc-600 dark:hover:bg-zinc-600 light:hover:bg-zinc-400 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-sm font-medium transition-colors duration-200"
+                            >
+                              <Github className="w-4 h-4" />
+                              <span>GitHub</span>
+                            </a>
+                            {project.url && (
+                              <a 
+                                href={project.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center space-x-2 px-4 py-2 bg-zinc-700 dark:bg-zinc-700 light:bg-zinc-300 hover:bg-zinc-600 dark:hover:bg-zinc-600 light:hover:bg-zinc-400 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-sm font-medium transition-colors duration-200"
+                              >
+                                <span>🌐</span>
+                                <span>Website</span>
+                              </a>
+                            )}
+                          </div>
                         </div>
 
                         {/* Project Details */}
