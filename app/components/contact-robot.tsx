@@ -1,9 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 export default function ContactRobotButton() {
+  const [isHappy, setIsHappy] = useState(false);
+  const [feeding, setFeeding] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [treat, setTreat] = useState<string>("🍦");
+  const [reaction, setReaction] = useState<string>("I'm FZNova — click me to contact my owner");
+
+  const pickReaction = (t: string): string => {
+    const map: Record<string, string[]> = {
+      "🍦": ["Yum! 🍦", "So cool! ❄️", "Ice dream!"],
+      "🍪": ["Crunch! 🍪", "Cookie time!", "Nom nom!"],
+      "🧁": ["Sweet! 🧁", "Sugar boost!", "Cupcake joy!"],
+      "🍰": ["Cake! 🍰", "Delish!", "More please!"],
+    };
+    const arr = map[t] || ["Yum!"];
+    return arr[Math.floor(Math.random() * arr.length)];
+  };
+
+  const handleFeed = (e: React.MouseEvent, chosen?: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const t = chosen || treat;
+    setTreat(t);
+    setReaction(pickReaction(t));
+    setMenuOpen(false);
+    setFeeding(true);
+    setIsHappy(true);
+    setTimeout(() => setFeeding(false), 1200);
+    setTimeout(() => setIsHappy(false), 3000);
+  };
   return (
     <div className="robot-patrol inline-block select-none">
       <Link href="/contact" aria-label="Contact via FZNova" className="inline-block select-none">
@@ -75,15 +104,27 @@ export default function ContactRobotButton() {
           <g>
             <ellipse cx="185" cy="50" rx="36" ry="24" fill="#0f172a" stroke="url(#brandGrad)" />
             {/* Left eye */}
-            <circle cx="173" cy="50" r="6" fill="#93c5fd">
-              <animate attributeName="cx" values="173;176;173" dur="3s" repeatCount="indefinite" />
-              <animate attributeName="r" values="6;6;0.8;6" keyTimes="0;0.86;0.9;1" dur="4.8s" repeatCount="indefinite" />
-            </circle>
+            {isHappy ? (
+              <g transform="translate(173, 50)">
+                <path d="M-6,0 C-6,-4.5 -1.5,-6 0,-3 C1.5,-6 6,-4.5 6,0 C6,4.5 0,6 0,3 C0,6 -6,4.5 -6,0 Z" fill="#ef4444" />
+              </g>
+            ) : (
+              <circle cx="173" cy="50" r="6" fill="#93c5fd">
+                <animate attributeName="cx" values="173;176;173" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="r" values="6;6;0.8;6" keyTimes="0;0.86;0.9;1" dur="4.8s" repeatCount="indefinite" />
+              </circle>
+            )}
             {/* Right eye */}
-            <circle cx="193" cy="50" r="6" fill="#5eead4">
-              <animate attributeName="cx" values="193;190;193" dur="3s" repeatCount="indefinite" />
-              <animate attributeName="r" values="6;6;0.8;6" keyTimes="0;0.86;0.9;1" dur="5.2s" repeatCount="indefinite" />
-            </circle>
+            {isHappy ? (
+              <g transform="translate(193, 50)">
+                <path d="M-6,0 C-6,-4.5 -1.5,-6 0,-3 C1.5,-6 6,-4.5 6,0 C6,4.5 0,6 0,3 C0,6 -6,4.5 -6,0 Z" fill="#ef4444" />
+              </g>
+            ) : (
+              <circle cx="193" cy="50" r="6" fill="#5eead4">
+                <animate attributeName="cx" values="193;190;193" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="r" values="6;6;0.8;6" keyTimes="0;0.86;0.9;1" dur="5.2s" repeatCount="indefinite" />
+              </circle>
+            )}
             <animateTransform attributeName="transform" type="rotate" values="-5 185 50; 5 185 50; -5 185 50" dur="4s" repeatCount="indefinite" />
           </g>
           <line x1="185" y1="20" x2="185" y2="28" stroke="url(#brandGrad)" strokeWidth="2" />
@@ -91,9 +132,24 @@ export default function ContactRobotButton() {
         </g>
       </svg>
       {/* Hover pop-out conversation bubble */}
-      <div className="robot-bubble absolute -top-14 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full text-sm font-semibold shadow-xl opacity-0 scale-90 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 bg-zinc-900/95 text-white dark:bg-zinc-900/95 dark:text-white light:bg-white/95 light:text-zinc-900 border border-cyan-400/60 dark:border-cyan-400/60 light:border-zinc-300">
-        I'm FZNova — click me to contact my owner
+      <div className={`robot-bubble absolute -top-14 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full text-sm font-semibold shadow-xl opacity-0 scale-90 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 ${feeding ? 'opacity-100 scale-100' : ''} bg-zinc-900/95 text-white dark:bg-zinc-900/95 dark:text-white light:bg-white/95 light:text-zinc-900 border border-cyan-400/60 dark:border-cyan-400/60 light:border-zinc-300`}>
+        {isHappy ? reaction : "I'm FZNova — click me to contact my owner"}
       </div>
+      {/* Treat menu toggle */}
+      <div className="absolute -right-3 -top-3">
+        <button type="button" onClick={(e)=>{e.preventDefault();e.stopPropagation();setMenuOpen(v=>!v);}} className="feed-btn w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-400 text-white shadow-lg border border-white/20 opacity-80 hover:opacity-100 transition focus:outline-none">🍬</button>
+        {menuOpen && (
+          <div className="mt-2 ml-[-6rem] w-28 rounded-xl bg-zinc-900/95 text-white dark:bg-zinc-900/95 dark:text-white light:bg-white/95 light:text-zinc-900 border border-cyan-400/50 light:border-zinc-300 p-2 flex justify-between gap-1 shadow-xl">
+            {['🍦','🍪','🧁','🍰'].map(t => (
+              <button key={t} className="w-8 h-8 rounded-md bg-zinc-800/40 light:bg-white/70 hover:scale-110 transition" onClick={(e)=>handleFeed(e, t)}>{t}</button>
+            ))}
+          </div>
+        )}
+      </div>
+      {/* Treat drop animation */}
+      {feeding && (
+        <div className="ice absolute right-2 -top-6 text-2xl animate-drop-ice">{treat}</div>
+      )}
       </div>
     </Link>
     <style jsx>{`
@@ -142,6 +198,13 @@ export default function ContactRobotButton() {
         border-left-color: #d4d4d8;
         border-bottom-color: #d4d4d8;
       }
+      .feed-btn { pointer-events: auto; }
+      @keyframes drop-ice {
+        0% { transform: translateY(-20px) scale(0.9); opacity: 0; }
+        40% { transform: translateY(6px) scale(1); opacity: 1; }
+        100% { transform: translateY(24px) scale(0.8); opacity: 0; }
+      }
+      .animate-drop-ice { animation: drop-ice 1.1s ease-out forwards; }
       @media (prefers-reduced-motion: reduce) {
         .robot-patrol { animation: none; }
       }
