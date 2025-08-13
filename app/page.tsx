@@ -4,7 +4,6 @@ import Image from "next/image";
 import Particles from "./components/particles";
 import VignetteBackground from "./components/vignette-bg";
 import ContactRobotButton from "./components/contact-robot";
-import BackgroundMusic from "./components/background-music";
 import { Navigation } from "./components/nav";
 import { TypingAnimation } from "./components/typing-animation";
 
@@ -111,8 +110,6 @@ export default function Home() {
         className="absolute inset-0 -z-10"
         quantity={100}
       />
-      {/* Background Music Player */}
-      <BackgroundMusic />
       <script dangerouslySetInnerHTML={{__html: `
         (function(){
           function updateStop(){
