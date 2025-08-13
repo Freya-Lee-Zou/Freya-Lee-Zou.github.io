@@ -95,10 +95,13 @@ export default function BackgroundMusic() {
           onLoadedMetadata={handleAudioLoad}
           onCanPlay={handleAudioCanPlay}
         >
-          {/* Replace with your music file path */}
+          {/* Primary audio source */}
           <source src="/music/first-man.mp3" type="audio/mpeg" />
+          {/* Fallback sources for better compatibility */}
           <source src="/music/first-man.ogg" type="audio/ogg" />
-          Your browser does not support the audio element.
+          <source src="/music/first-man.wav" type="audio/wav" />
+          {/* Fallback message */}
+          <p>Your browser does not support the audio element.</p>
         </audio>
 
         {/* Music Controls */}
