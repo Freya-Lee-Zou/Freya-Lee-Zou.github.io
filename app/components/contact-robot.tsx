@@ -6,16 +6,17 @@ import React from "react";
 export default function ContactRobotButton() {
   return (
     <div className="robot-patrol inline-block select-none">
-      <Link href="/contact" aria-label="Contact me" className="inline-block select-none">
-      <svg
-        width="300"
-        height="150"
-        viewBox="0 0 300 150"
-        xmlns="http://www.w3.org/2000/svg"
-        className="transition-transform duration-300 hover:scale-[1.03]"
-        role="img"
-      >
-        <title>Contact me</title>
+      <Link href="/contact" aria-label="Contact via FZNova" className="inline-block select-none">
+        <div className="relative inline-block group">
+        <svg
+          width="300"
+          height="150"
+          viewBox="0 0 300 150"
+          xmlns="http://www.w3.org/2000/svg"
+          className="transition-transform duration-300 group-hover:scale-[1.06]"
+          role="img"
+        >
+        <title>FZNova</title>
         <defs>
           <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#60A5FA" />
@@ -89,6 +90,11 @@ export default function ContactRobotButton() {
           <circle cx="185" cy="18" r="2" fill="url(#brandGrad)" />
         </g>
       </svg>
+      {/* Hover pop-out conversation bubble */}
+      <div className="robot-bubble absolute -top-14 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-zinc-900/95 text-white text-sm font-semibold border border-cyan-400/60 shadow-xl opacity-0 scale-90 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:scale-100">
+        I'm FZNova — click me to contact my owner
+      </div>
+      </div>
     </Link>
     <style jsx>{`
       @keyframes patrol {
@@ -104,6 +110,19 @@ export default function ContactRobotButton() {
         z-index: 40;
         animation: patrol 36s ease-in-out infinite;
         pointer-events: auto;
+      }
+      .robot-bubble::after{
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        width: 12px;
+        height: 12px;
+        background: rgba(24,24,27,0.95);
+        border-left: 1px solid rgba(34,211,238,0.6);
+        border-bottom: 1px solid rgba(34,211,238,0.6);
+        border-radius: 2px;
       }
       @media (prefers-reduced-motion: reduce) {
         .robot-patrol { animation: none; }
