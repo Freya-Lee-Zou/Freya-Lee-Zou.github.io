@@ -7,6 +7,7 @@ export default function BackgroundMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.3);
+  const [audioError, setAudioError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -15,12 +16,25 @@ export default function BackgroundMusic() {
     }
   }, [volume]);
 
+  const handleAudioError = (e: Event) => {
+    console.error('Audio error:', e);
+    setAudioError('Failed to load audio file');
+  };
+
+  const handleAudioLoad = () => {
+    setAudioError(null);
+    console.log('Audio loaded successfully');
+  };
+
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play();
+        audioRef.current.play().catch(error => {
+          console.error('Error playing audio:', error);
+          setAudioError('Failed to play audio');
+        });
       }
       setIsPlaying(!isPlaying);
     }
@@ -52,10 +66,12 @@ export default function BackgroundMusic() {
           onEnded={() => setIsPlaying(false)}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
+          onError={handleAudioError}
+          onLoadedMetadata={handleAudioLoad}
         >
           {/* Replace with your music file path */}
-          <source src="/music/background-music.mp3" type="audio/mpeg" />
-          <source src="/music/background-music.ogg" type="audio/ogg" />
+          <source src="/music/first-man.mp3" type="audio/mpeg" />
+          <source src="/music/first-man.ogg" type="audio/ogg" />
           Your browser does not support the audio element.
         </audio>
 
@@ -110,6 +126,9 @@ export default function BackgroundMusic() {
           <p className="text-xs text-zinc-500 dark:text-zinc-500 light:text-zinc-500">
             {isPlaying ? 'Now Playing' : 'Paused'}
           </p>
+          {audioError && (
+            <p className="text-xs text-red-400 mt-1">{audioError}</p>
+          )}
         </div>
       </div>
 
