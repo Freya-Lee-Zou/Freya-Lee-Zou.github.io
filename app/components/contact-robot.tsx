@@ -91,7 +91,7 @@ export default function ContactRobotButton() {
         </g>
       </svg>
       {/* Hover pop-out conversation bubble */}
-      <div className="robot-bubble absolute -top-14 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full bg-zinc-900/95 text-white text-sm font-semibold border border-cyan-400/60 shadow-xl opacity-0 scale-90 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:scale-100">
+      <div className="robot-bubble absolute -top-14 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-full text-sm font-semibold shadow-xl opacity-0 scale-90 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 bg-zinc-900/95 text-white dark:bg-zinc-900/95 dark:text-white light:bg-white/95 light:text-zinc-900 border border-cyan-400/60 dark:border-cyan-400/60 light:border-zinc-300">
         I'm FZNova — click me to contact my owner
       </div>
       </div>
@@ -111,6 +111,19 @@ export default function ContactRobotButton() {
         animation: patrol 36s ease-in-out infinite;
         pointer-events: auto;
       }
+      /* Theme-specific bubble overrides to ensure readability */
+      :global(html.dark) .robot-bubble {
+        background: rgba(24,24,27,0.95);
+        color: #ffffff;
+        border-color: rgba(34,211,238,0.6);
+        text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+      }
+      :global(html.light) .robot-bubble {
+        background: rgba(255,255,255,0.98);
+        color: #18181b;
+        border-color: #d4d4d8;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+      }
       .robot-bubble::after{
         content: '';
         position: absolute;
@@ -123,6 +136,11 @@ export default function ContactRobotButton() {
         border-left: 1px solid rgba(34,211,238,0.6);
         border-bottom: 1px solid rgba(34,211,238,0.6);
         border-radius: 2px;
+      }
+      :global(html.light) .robot-bubble::after {
+        background: rgba(255,255,255,0.98);
+        border-left-color: #d4d4d8;
+        border-bottom-color: #d4d4d8;
       }
       @media (prefers-reduced-motion: reduce) {
         .robot-patrol { animation: none; }
