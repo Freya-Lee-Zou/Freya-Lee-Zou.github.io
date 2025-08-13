@@ -92,10 +92,10 @@ export default function ContactRobotButton() {
     </Link>
     <style jsx>{`
       @keyframes patrol {
-        0% { transform: translateX(0); }
+        0% { transform: translateX(var(--min-x, 12vw)); }
         45% { transform: translateX(var(--stop-x, 60vw)); }
         55% { transform: translateX(var(--stop-x, 60vw)); }
-        100% { transform: translateX(0); }
+        100% { transform: translateX(var(--min-x, 12vw)); }
       }
       .robot-patrol {
         position: fixed;

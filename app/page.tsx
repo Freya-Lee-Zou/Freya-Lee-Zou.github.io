@@ -123,9 +123,12 @@ export default function Home() {
               var margin = 24; // space to keep before picture
               var stopX = (sphereRect.left - rootRect.left) - patrolRect.width - margin; // stop before picture
               var maxX = rootRect.width - patrolRect.width - margin;
-              if (stopX < 120) stopX = 120; // ensure some travel
+              var minX = Math.min(0.12 * rootRect.width, stopX - 80); // don't go too far left; keep some travel range
+              if (minX < 60) minX = 60;
+              if (stopX < minX + 120) stopX = minX + 120; // ensure distance between min and stop
               if (stopX > maxX) stopX = maxX;
               patrol.style.setProperty('--stop-x', stopX + 'px');
+              patrol.style.setProperty('--min-x', minX + 'px');
               // robot is pinned to bottom so only stop-x matters
             }catch(e){}
           }
