@@ -89,13 +89,15 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 
 					<Link
 						href="/projects"
-						className={`duration-200 hover:font-medium ${
+						className={`flex items-center space-x-2 px-4 py-2 rounded-lg bg-zinc-800/50 dark:bg-zinc-800/50 light:bg-zinc-200/50 hover:bg-zinc-700/70 dark:hover:bg-zinc-700/70 light:hover:bg-zinc-300/70 border border-zinc-700/50 dark:border-zinc-700/50 light:border-zinc-300/50 transition-all duration-200 hover:scale-105 ${
 							isIntersecting
-								? " text-zinc-400 hover:text-zinc-100"
+								? "text-zinc-300 hover:text-white"
 								: "text-zinc-600 hover:text-zinc-900"
 						} `}
+						aria-label="Back to Projects"
 					>
-						<ArrowLeft className="w-6 h-6 " />
+						<ArrowLeft className="w-5 h-5" />
+						<span className="text-sm font-medium">Back to Projects</span>
 					</Link>
 				</div>
 			</div>
@@ -118,6 +120,18 @@ export const Header: React.FC<Props> = ({ project, views }) => {
 								</Link>
 							))}
 						</div>
+					</div>
+
+					{/* Prominent Back Button */}
+					<div className="mt-8">
+						<Link
+							href="/projects"
+							className="inline-flex items-center space-x-3 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:from-blue-500 hover:via-cyan-600 hover:to-teal-500 text-white font-semibold shadow-lg transition-all duration-200 transform hover:scale-105 border border-white/20"
+							aria-label="Return to Projects Overview"
+						>
+							<ArrowLeft className="w-5 h-5" />
+							<span>Return to Projects</span>
+						</Link>
 					</div>
 				</div>
 			</div>

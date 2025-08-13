@@ -8,6 +8,7 @@ export default function BackgroundMusic() {
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.3);
   const [audioError, setAudioError] = useState<string | null>(null);
+  const [audioLoaded, setAudioLoaded] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -18,25 +19,49 @@ export default function BackgroundMusic() {
 
   const handleAudioError = (e: Event) => {
     console.error('Audio error:', e);
-    setAudioError('Failed to load audio file');
+    const target = e.target as HTMLAudioElement;
+    if (target.error) {
+      console.error('Audio error code:', target.error.code);
+      console.error('Audio error message:', target.error.message);
+    }
+    setAudioError(`Failed to load audio: ${target.error?.message || 'Unknown error'}`);
   };
 
   const handleAudioLoad = () => {
     setAudioError(null);
+    setAudioLoaded(true);
     console.log('Audio loaded successfully');
   };
 
-  const togglePlay = () => {
+  const handleAudioCanPlay = () => {
+    console.log('Audio can start playing');
+  };
+
+  const togglePlay = async () => {
     if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play().catch(error => {
-          console.error('Error playing audio:', error);
-          setAudioError('Failed to play audio');
-        });
+      try {
+        if (isPlaying) {
+          audioRef.current.pause();
+          setIsPlaying(false);
+        } else {
+          // Check if audio is loaded
+          if (audioRef.current.readyState < 2) {
+            console.log('Audio not ready, waiting...');
+            setAudioError('Loading audio...');
+            return;
+          }
+          
+          const playPromise = audioRef.current.play();
+          if (playPromise !== undefined) {
+            await playPromise;
+            setIsPlaying(true);
+            setAudioError(null);
+          }
+        }
+      } catch (error) {
+        console.error('Error playing audio:', error);
+        setAudioError(`Playback failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -68,6 +93,7 @@ export default function BackgroundMusic() {
           onPause={() => setIsPlaying(false)}
           onError={handleAudioError}
           onLoadedMetadata={handleAudioLoad}
+          onCanPlay={handleAudioCanPlay}
         >
           {/* Replace with your music file path */}
           <source src="/music/first-man.mp3" type="audio/mpeg" />
@@ -124,10 +150,13 @@ export default function BackgroundMusic() {
             Background Music
           </p>
           <p className="text-xs text-zinc-500 dark:text-zinc-500 light:text-zinc-500">
-            {isPlaying ? 'Now Playing' : 'Paused'}
+            {audioError ? 'Error' : isPlaying ? 'Now Playing' : audioLoaded ? 'Ready to Play' : 'Loading...'}
           </p>
           {audioError && (
-            <p className="text-xs text-red-400 mt-1">{audioError}</p>
+            <p className="text-xs text-red-400 mt-1 break-words max-w-[120px]">{audioError}</p>
+          )}
+          {!audioLoaded && !audioError && (
+            <p className="text-xs text-blue-400 mt-1">Loading audio...</p>
           )}
         </div>
       </div>

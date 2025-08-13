@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { allProjects } from "contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
-import { Eye, Play, Github } from "lucide-react";
+import { Eye, Play, Github, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function ProjectsPage() {
+  const [expandedProjects, setExpandedProjects] = useState<Set<string>>(new Set());
+
   // Mock views data until Redis is properly configured
   const views = allProjects.reduce((acc, project) => {
     acc[project.slug] = Math.floor(Math.random() * 1000); // Random demo views
@@ -54,6 +56,18 @@ export default function ProjectsPage() {
   const sortedMobileWeb = sortByDate(mobileWebProjects);
   const sortedCloudInfra = sortByDate(cloudInfraProjects);
 
+  const toggleProjectExpansion = (projectSlug: string) => {
+    const newExpanded = new Set(expandedProjects);
+    if (newExpanded.has(projectSlug)) {
+      newExpanded.delete(projectSlug);
+    } else {
+      newExpanded.add(projectSlug);
+    }
+    setExpandedProjects(newExpanded);
+  };
+
+  const isExpanded = (projectSlug: string) => expandedProjects.has(projectSlug);
+
   return (
     <div className="relative pb-16 bg-black dark:bg-black light:bg-white min-h-screen">
       {/* Professional light mode background pattern */}
@@ -76,41 +90,100 @@ export default function ProjectsPage() {
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {sortedAiML.map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
-                  
-                  {/* GitHub Link Section */}
-                  <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
-                        <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
+                <div key={project.slug} className="group">
+                  <Card>
+                    <div 
+                      className="cursor-pointer"
+                      onClick={() => toggleProjectExpansion(project.slug)}
+                    >
+                      <Article project={project} views={views[project.slug] ?? 0} />
+                      
+                      {/* GitHub Link Section */}
+                      <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-2">
+                            <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
+                            <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
+                          </div>
+                          <a 
+                            href={`https://github.com/freyazou/${project.slug}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            View Code
+                          </a>
+                        </div>
                       </div>
-                      <a 
-                        href={`https://github.com/freyazou/${project.slug}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
-                      >
-                        View Code
-                      </a>
-                    </div>
-                  </div>
 
-                  {/* YouTube Video Section */}
-                  <div className="mt-3 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <Play className="w-4 h-4 text-red-500" />
-                      <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Project Demo</span>
-                    </div>
-                    <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
-                      <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
-                        <Play className="w-8 h-8 mx-auto mb-2" />
-                        <p className="text-xs">Video coming soon</p>
+                      {/* Expand/Collapse Indicator */}
+                      <div className="mt-3 flex justify-center">
+                        <div className="flex items-center space-x-2 text-zinc-400 dark:text-zinc-400 light:text-zinc-500 text-sm">
+                          <span>{isExpanded(project.slug) ? 'Hide Demo' : 'Click to Show Demo'}</span>
+                          {isExpanded(project.slug) ? (
+                            <ChevronUp className="w-4 h-4" />
+                          ) : (
+                            <ChevronDown className="w-4 h-4" />
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Card>
+
+                    {/* Expandable Demo Section */}
+                    {isExpanded(project.slug) && (
+                      <div className="mt-4 p-4 bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-100/40 rounded-lg border border-zinc-800/40 dark:border-zinc-800/40 light:border-zinc-300/40">
+                        <h3 className="text-lg font-semibold text-white dark:text-white light:text-zinc-800 mb-4 flex items-center space-x-2">
+                          <Play className="w-5 h-5 text-red-500" />
+                          <span>Project Demo & Details</span>
+                        </h3>
+                        
+                        {/* YouTube Video Section */}
+                        <div className="mb-4">
+                          <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
+                            <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
+                              <Play className="w-12 h-12 mx-auto mb-2 text-red-500" />
+                              <p className="text-sm">Video coming soon</p>
+                              <p className="text-xs mt-1">Click to expand and view demo</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Project Details */}
+                        <div className="space-y-3">
+                          <div className="p-3 bg-zinc-800/30 dark:bg-zinc-800/30 light:bg-zinc-200/30 rounded-md">
+                            <h4 className="font-medium text-white dark:text-white light:text-zinc-800 mb-2">Technologies Used</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {project.tags?.map((tag, index) => (
+                                <span key={index} className="px-2 py-1 bg-zinc-700 dark:bg-zinc-700 light:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 text-xs rounded-md">
+                                  {tag}
+                                </span>
+                              )) || (
+                                <span className="text-zinc-500 dark:text-zinc-500 light:text-zinc-500 text-sm">Tags coming soon</span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="p-3 bg-zinc-800/30 dark:bg-zinc-800/30 light:bg-zinc-200/30 rounded-md">
+                            <h4 className="font-medium text-white dark:text-white light:text-zinc-800 mb-2">Key Features</h4>
+                            <p className="text-zinc-300 dark:text-zinc-300 light:text-zinc-600 text-sm">
+                              {project.description}
+                            </p>
+                          </div>
+
+                          <div className="flex justify-center pt-2">
+                            <Link
+                              href={`/projects/${project.slug}`}
+                              className="px-4 py-2 bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:from-blue-500 hover:via-cyan-600 hover:to-teal-500 text-white text-sm font-medium rounded-md transition-all duration-200 transform hover:scale-105"
+                            >
+                              View Full Project Details →
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
@@ -124,41 +197,100 @@ export default function ProjectsPage() {
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {sortedMobileWeb.map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
-                  
-                  {/* GitHub Link Section */}
-                  <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
-                        <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
+                <div key={project.slug} className="group">
+                  <Card>
+                    <div 
+                      className="cursor-pointer"
+                      onClick={() => toggleProjectExpansion(project.slug)}
+                    >
+                      <Article project={project} views={views[project.slug] ?? 0} />
+                      
+                      {/* GitHub Link Section */}
+                      <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-2">
+                            <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
+                            <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
+                          </div>
+                          <a 
+                            href={`https://github.com/freyazou/${project.slug}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            View Code
+                          </a>
+                        </div>
                       </div>
-                      <a 
-                        href={`https://github.com/freyazou/${project.slug}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
-                      >
-                        View Code
-                      </a>
-                    </div>
-                  </div>
 
-                  {/* YouTube Video Section */}
-                  <div className="mt-3 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <Play className="w-4 h-4 text-red-500" />
-                      <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Project Demo</span>
-                    </div>
-                    <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
-                      <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
-                        <Play className="w-8 h-8 mx-auto mb-2" />
-                        <p className="text-xs">Video coming soon</p>
+                      {/* Expand/Collapse Indicator */}
+                      <div className="mt-3 flex justify-center">
+                        <div className="flex items-center space-x-2 text-zinc-400 dark:text-zinc-400 light:text-zinc-500 text-sm">
+                          <span>{isExpanded(project.slug) ? 'Hide Demo' : 'Click to Show Demo'}</span>
+                          {isExpanded(project.slug) ? (
+                            <ChevronUp className="w-4 h-4" />
+                          ) : (
+                            <ChevronDown className="w-4 h-4" />
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Card>
+
+                    {/* Expandable Demo Section */}
+                    {isExpanded(project.slug) && (
+                      <div className="mt-4 p-4 bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-100/40 rounded-lg border border-zinc-800/40 dark:border-zinc-800/40 light:border-zinc-300/40">
+                        <h3 className="text-lg font-semibold text-white dark:text-white light:text-zinc-800 mb-4 flex items-center space-x-2">
+                          <Play className="w-5 h-5 text-red-500" />
+                          <span>Project Demo & Details</span>
+                        </h3>
+                        
+                        {/* YouTube Video Section */}
+                        <div className="mb-4">
+                          <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
+                            <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
+                              <Play className="w-12 h-12 mx-auto mb-2 text-red-500" />
+                              <p className="text-sm">Video coming soon</p>
+                              <p className="text-xs mt-1">Click to expand and view demo</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Project Details */}
+                        <div className="space-y-3">
+                          <div className="p-3 bg-zinc-800/30 dark:bg-zinc-800/30 light:bg-zinc-200/30 rounded-md">
+                            <h4 className="font-medium text-white dark:text-white light:text-zinc-800 mb-2">Technologies Used</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {project.tags?.map((tag, index) => (
+                                <span key={index} className="px-2 py-1 bg-zinc-700 dark:bg-zinc-700 light:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 text-xs rounded-md">
+                                  {tag}
+                                </span>
+                              )) || (
+                                <span className="text-zinc-500 dark:text-zinc-500 light:text-zinc-500 text-sm">Tags coming soon</span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="p-3 bg-zinc-800/30 dark:bg-zinc-800/30 light:bg-zinc-200/30 rounded-md">
+                            <h4 className="font-medium text-white dark:text-white light:text-zinc-800 mb-2">Key Features</h4>
+                            <p className="text-zinc-300 dark:text-zinc-300 light:text-zinc-600 text-sm">
+                              {project.description}
+                            </p>
+                          </div>
+
+                          <div className="flex justify-center pt-2">
+                            <Link
+                              href={`/projects/${project.slug}`}
+                              className="px-4 py-2 bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:from-blue-500 hover:via-cyan-600 hover:to-teal-500 text-white text-sm font-medium rounded-md transition-all duration-200 transform hover:scale-105"
+                            >
+                              View Full Project Details →
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
@@ -172,41 +304,100 @@ export default function ProjectsPage() {
             </h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {sortedCloudInfra.map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} views={views[project.slug] ?? 0} />
-                  
-                  {/* GitHub Link Section */}
-                  <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
-                        <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
+                <div key={project.slug} className="group">
+                  <Card>
+                    <div 
+                      className="cursor-pointer"
+                      onClick={() => toggleProjectExpansion(project.slug)}
+                    >
+                      <Article project={project} views={views[project.slug] ?? 0} />
+                      
+                      {/* GitHub Link Section */}
+                      <div className="mt-4 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
+                        <div className="flex items-center space-x-2">
+                          <div className="flex items-center space-x-2">
+                            <Github className="w-4 h-4 text-zinc-400 dark:text-zinc-400 light:text-zinc-500" />
+                            <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Source Code</span>
+                          </div>
+                          <a 
+                            href={`https://github.com/freyazou/${project.slug}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            View Code
+                          </a>
+                        </div>
                       </div>
-                      <a 
-                        href={`https://github.com/freyazou/${project.slug}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 hover:bg-zinc-700 dark:hover:bg-zinc-700 light:hover:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-600 hover:text-white dark:hover:text-white light:hover:text-zinc-800 rounded-md text-xs font-medium transition-colors duration-200"
-                      >
-                        View Code
-                      </a>
-                    </div>
-                  </div>
 
-                  {/* YouTube Video Section */}
-                  <div className="mt-3 p-3 bg-zinc-900/30 dark:bg-zinc-900/30 light:bg-zinc-100/30 rounded-lg border border-zinc-800/30 dark:border-zinc-800/30 light:border-zinc-300/30">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <Play className="w-4 h-4 text-red-500" />
-                      <span className="text-sm font-medium text-zinc-300 dark:text-zinc-300 light:text-zinc-600">Project Demo</span>
-                    </div>
-                    <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
-                      <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
-                        <Play className="w-8 h-8 mx-auto mb-2" />
-                        <p className="text-xs">Video coming soon</p>
+                      {/* Expand/Collapse Indicator */}
+                      <div className="mt-3 flex justify-center">
+                        <div className="flex items-center space-x-2 text-zinc-400 dark:text-zinc-400 light:text-zinc-500 text-sm">
+                          <span>{isExpanded(project.slug) ? 'Hide Demo' : 'Click to Show Demo'}</span>
+                          {isExpanded(project.slug) ? (
+                            <ChevronUp className="w-4 h-4" />
+                          ) : (
+                            <ChevronDown className="w-4 h-4" />
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Card>
+
+                    {/* Expandable Demo Section */}
+                    {isExpanded(project.slug) && (
+                      <div className="mt-4 p-4 bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-100/40 rounded-lg border border-zinc-800/40 dark:border-zinc-800/40 light:border-zinc-300/40">
+                        <h3 className="text-lg font-semibold text-white dark:text-white light:text-zinc-800 mb-4 flex items-center space-x-2">
+                          <Play className="w-5 h-5 text-red-500" />
+                          <span>Project Demo & Details</span>
+                        </h3>
+                        
+                        {/* YouTube Video Section */}
+                        <div className="mb-4">
+                          <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
+                            <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
+                              <Play className="w-12 h-12 mx-auto mb-2 text-red-500" />
+                              <p className="text-sm">Video coming soon</p>
+                              <p className="text-xs mt-1">Click to expand and view demo</p>
+                            </div>
+                            </div>
+                        </div>
+
+                        {/* Project Details */}
+                        <div className="space-y-3">
+                          <div className="p-3 bg-zinc-800/30 dark:bg-zinc-800/30 light:bg-zinc-200/30 rounded-md">
+                            <h4 className="font-medium text-white dark:text-white light:text-zinc-800 mb-2">Technologies Used</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {project.tags?.map((tag, index) => (
+                                <span key={index} className="px-2 py-1 bg-zinc-700 dark:bg-zinc-700 light:bg-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 text-xs rounded-md">
+                                  {tag}
+                                </span>
+                              )) || (
+                                <span className="text-zinc-500 dark:text-zinc-500 light:text-zinc-500 text-sm">Tags coming soon</span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="p-3 bg-zinc-800/30 dark:bg-zinc-800/30 light:bg-zinc-200/30 rounded-md">
+                            <h4 className="font-medium text-white dark:text-white light:text-zinc-800 mb-2">Key Features</h4>
+                            <p className="text-zinc-300 dark:text-zinc-300 light:text-zinc-600 text-sm">
+                              {project.description}
+                            </p>
+                          </div>
+
+                          <div className="flex justify-center pt-2">
+                            <Link
+                              href={`/projects/${project.slug}`}
+                              className="px-4 py-2 bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 hover:from-blue-500 hover:via-cyan-600 hover:to-teal-500 text-white text-sm font-medium rounded-md transition-all duration-200 transform hover:scale-105"
+                            >
+                              View Full Project Details →
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
