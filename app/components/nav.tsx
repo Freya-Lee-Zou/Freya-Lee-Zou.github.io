@@ -23,20 +23,15 @@ export const Navigation: React.FC = () => {
 				<div className="container flex items-center p-6 mx-auto">
 					{/* Logo on the left */}
 					<Link href="/" aria-label="Go to home" className="duration-200 flex items-center hover:opacity-90">
-						<svg className="w-7 h-7 mr-2" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<defs>
-								<linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-									<stop offset="0%" stopColor="#60A5FA" />
-									<stop offset="50%" stopColor="#06B6D4" />
-									<stop offset="100%" stopColor="#14B8A6" />
-								</linearGradient>
-							</defs>
-							<path d="M8 6h14v3h-11v3h9v3h-9v4h-3V6z" fill="url(#logoGradient)"/>
-							<path d="M10 20h12l-12 6h12v-2l-10-2h10v-2h-12l12-6h-12v2l10 2h-10v2z" fill="url(#logoGradient)"/>
-						</svg>
-						<span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 tracking-tight">
-							freyazou.com
-						</span>
+						<div className="mr-2 relative w-10 h-10">
+							{/* Spinning gradient ring */}
+							<div className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 animate-[spin_14s_linear_infinite] shadow-md">
+								{/* Inner sphere */}
+								<div className="w-full h-full rounded-full flex items-center justify-center bg-zinc-900 dark:bg-zinc-900 light:bg-zinc-100">
+									<span className="text-sm font-black text-white leading-none">FZ</span>
+								</div>
+							</div>
+						</div>
 					</Link>
 
 					{/* Navigation links moved to the right side */}
