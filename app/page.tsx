@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Particles from "./components/particles";
 import VignetteBackground from "./components/vignette-bg";
+import ContactRobotButton from "./components/contact-robot";
 import { Navigation } from "./components/nav";
 import { TypingAnimation } from "./components/typing-animation";
 
@@ -26,50 +27,21 @@ export default function Home() {
                 <span className="inline-block">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-400 typing-animation-text">
                     <TypingAnimation 
-                      texts={["I'm Freya Zou", "AI Enthusiast", "Problem Solver"]}
+                      texts={["I'm Freya Zou, Software Engineer, AI/ML Developer"]}
                       speed={80}
                       delay={3000}
                     />
                   </span>
                 </span>
               </h1>
-              <h2 className="text-xl md:text-2xl text-zinc-300 dark:text-zinc-300 light:text-zinc-600 font-medium">
-                Software Engineer & AI/ML Developer
-              </h2>
+              
             </div>
             
-            {/* Tagline */}
-            <div className="space-y-4">
-              <h3 className="text-3xl md:text-4xl font-bold text-white dark:text-white light:text-zinc-800">
-                I love to Create
-              </h3>
-              <p className="text-base text-zinc-400 dark:text-zinc-400 light:text-zinc-600 leading-relaxed max-w-md">
-                Building intelligent systems with AI/ML — practical, reliable, and focused on real impact.
-              </p>
-            </div>
+            {/* Tagline removed for a cleaner hero */}
             
             {/* Call to Action Button */}
-            <div className="pt-6">
-              <div className="relative inline-block group">
-                {/* Subtle gradient outline */}
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 opacity-60 group-hover:opacity-90 transition-opacity pointer-events-none"></div>
-
-                {/* Clean primary button */}
-                <Link
-                  href="/contact"
-                  className="relative inline-flex items-center justify-center px-9 py-4 rounded-2xl text-white font-semibold text-lg bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 shadow-lg hover:shadow-xl transition-transform duration-300 hover:-translate-y-0.5"
-                >
-                  <span className="relative">CONTACT ME</span>
-                  <svg
-                    className="w-5 h-5 ml-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
-              </div>
+            <div className="pt-8">
+              <ContactRobotButton />
             </div>
           </div>
           
