@@ -6,7 +6,7 @@ import { allProjects } from "contentlayer/generated";
 import { Navigation } from "../components/nav";
 import { Card } from "../components/card";
 import { Article } from "./article";
-import { Eye, Play, Github, ChevronDown, ChevronUp } from "lucide-react";
+import { Eye, Video, Github, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function ProjectsPage() {
   const [expandedProjects, setExpandedProjects] = useState<Set<string>>(new Set());
@@ -115,7 +115,7 @@ export default function ProjectsPage() {
                     {isExpanded(project.slug) && (
                       <div className="mt-4 p-4 bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-100/40 rounded-lg border border-zinc-800/40 dark:border-zinc-800/40 light:border-zinc-300/40">
                         <h3 className="text-lg font-semibold text-white dark:text-white light:text-zinc-800 mb-4 flex items-center space-x-2">
-                          <Play className="w-5 h-5 text-red-500" />
+                          <Video className="w-5 h-5 text-blue-500" />
                           <span>Project Demo & Details</span>
                         </h3>
                         
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
                         <div className="mb-4">
                           <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
                             <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
-                              <Play className="w-12 h-12 mx-auto mb-2 text-red-500" />
+                              <Video className="w-12 h-12 mx-auto mb-2 text-blue-500" />
                               <p className="text-sm">Video coming soon</p>
                               <p className="text-xs mt-1">Click to expand and view demo</p>
                             </div>
@@ -230,7 +230,7 @@ export default function ProjectsPage() {
                     {isExpanded(project.slug) && (
                       <div className="mt-4 p-4 bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-100/40 rounded-lg border border-zinc-800/40 dark:border-zinc-800/40 light:border-zinc-300/40">
                         <h3 className="text-lg font-semibold text-white dark:text-white light:text-zinc-800 mb-4 flex items-center space-x-2">
-                          <Play className="w-5 h-5 text-red-500" />
+                          <Video className="w-5 h-5 text-blue-500" />
                           <span>Project Demo & Details</span>
                         </h3>
                         
@@ -238,7 +238,7 @@ export default function ProjectsPage() {
                         <div className="mb-4">
                           <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
                             <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
-                              <Play className="w-12 h-12 mx-auto mb-2 text-red-500" />
+                              <Video className="w-12 h-12 mx-auto mb-2 text-blue-500" />
                               <p className="text-sm">Video coming soon</p>
                               <p className="text-xs mt-1">Click to expand and view demo</p>
                             </div>
@@ -345,7 +345,7 @@ export default function ProjectsPage() {
                     {isExpanded(project.slug) && (
                       <div className="mt-4 p-4 bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-100/40 rounded-lg border border-zinc-800/40 dark:border-zinc-800/40 light:border-zinc-300/40">
                         <h3 className="text-lg font-semibold text-white dark:text-white light:text-zinc-800 mb-4 flex items-center space-x-2">
-                          <Play className="w-5 h-5 text-red-500" />
+                          <Video className="w-5 h-5 text-blue-500" />
                           <span>Project Demo & Details</span>
                         </h3>
                         
@@ -353,7 +353,7 @@ export default function ProjectsPage() {
                         <div className="mb-4">
                           <div className="aspect-video bg-zinc-800 dark:bg-zinc-800 light:bg-zinc-200 rounded-md flex items-center justify-center">
                             <div className="text-center text-zinc-400 dark:text-zinc-400 light:text-zinc-500">
-                              <Play className="w-12 h-12 mx-auto mb-2 text-red-500" />
+                              <Video className="w-12 h-12 mx-auto mb-2 text-blue-500" />
                               <p className="text-sm">Video coming soon</p>
                               <p className="text-xs mt-1">Click to expand and view demo</p>
                             </div>
